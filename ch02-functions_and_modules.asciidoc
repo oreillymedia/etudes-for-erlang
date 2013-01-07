@@ -1,0 +1,35 @@
+[[FUNCTIONSMODULES]]
+Études for Chapter 2: Functions and Modules
+-------------------------------------------
+
+[[CH02-ET1]]
+Étude 2-1
+~~~~~~~~~~
+Write a module with a function that takes the length and width of a
+rectangle and returns (yields) its area.  Name the module +geom+, and
+name the function +area+. The function has arity 2, because it needs
+two pieces of information to make the calculation. In Erlang-speak: 
+write function +area/2+.
+
+Here's what it looks like when you run the program:
+
+[source,erl]
+----
+1> c(geom).
+{ok,geom}
+2> geom:area(3,4).
+12
+3> geom:area(12,7).
+84
+----
+
+[[CH02-ET2]]
+Étude 2-2
+~~~~~~~~~
+Document the +geom+ module you wrote in <<CH02-ET1,Étude 2-1>>.
+
+[[CH02-ET3]]
+Étude 3
+~~~~~~~
+Document the +area/2+ function, and create an _overview.edoc_ file to complete
+the documentation of the application you've written.
