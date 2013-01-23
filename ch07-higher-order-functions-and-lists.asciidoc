@@ -14,7 +14,7 @@ velocity changes a little bit as the object starts falling, and then falls
 faster and faster as time goes by.
 
 You can calculate the rate of change of a function by calculating:
-+F(X + Delta) - F(X) / Delta+, where +Delta+ is the interval
++(F(X + Delta) - F(X)) / Delta+, where +Delta+ is the interval
 between measurements. As Delta approaches zero, you get closer and
 closer to the true value of the derivative.
 
@@ -25,7 +25,7 @@ second argument is the point at which you are measuring the derivative.
 What should you use for a value of +Delta+? I used +1.0e-10+, as that is a small
 number that approaches zero.
 
-Here's what it looks like.
+Here is some sample output.
 
 [source, erl]
 -----
@@ -106,7 +106,7 @@ divide by the number of items in the list (which you may find by using the
 +length/1+ function).Use +lists:foldl/3+ to calculate the sum of the items
 in the list.
 
-Here's the algorithm for calculating
+The following is the algorithm for calculating
 the standard deviation. Presume that +N+ is the number of items
 in the list.
 
@@ -196,8 +196,8 @@ of cards as a list 52 tuples in this form:
 [[CH07-ET06]]
 Étude 7-6
 ~~~~~~~~~
-You need a way to shuffle the deck of cards. Here is the code for
-doing a shuffle, taken from the Literate Programs wiki.
+You need a way to shuffle the deck of cards. This is the code for
+doing a shuffle, taken from the Literate Programs Wiki.
 
 [source, erlang]
 -----
@@ -213,4 +213,4 @@ of this étude? I want you to understand the code. The object of this
 étude is to write the documentation for the algorithm.
 If you aren't sure what the code does, try adding some
 +io:format+ statements to see what is happening. If you're totally
-stuck, http://en.literateprograms.org/Fisher-Yates_shuffle_%28Erlang%29[see the explanation from the Literate Programs Wiki].
+stuck, http://en.literateprograms.org/Fisher-Yates_shuffle_%28Erlang%29[see the explanation from Literate Programs site].
