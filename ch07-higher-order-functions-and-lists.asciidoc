@@ -205,6 +205,13 @@ show something that ends like this. Don't freak out.
 {7,[...]},
 {7,...},
 {...}|...]
+
+If you want to see the full list, use this function.
+
+[source, erl]
+show_deck(Deck) ->
+  lists:foreach(fun(Item) -> io:format("~p~n", [Item]) end, Deck).
+
 ===========
 
 [[CH07-ET06]]
