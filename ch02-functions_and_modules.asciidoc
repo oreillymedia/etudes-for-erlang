@@ -11,7 +11,7 @@ name the function +area+. The function has arity 2, because it needs
 two pieces of information to make the calculation. In Erlang-speak: 
 write function +area/2+.
 
-Here's what it looks like when you run the program:
+Here is some sample output.
 
 [source,erl]
 ----
