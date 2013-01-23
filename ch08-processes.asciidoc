@@ -93,11 +93,6 @@ flow considerably and also fits in nicely with the OTP concepts of supervisors
 and servers, covered in Chapter 10 of _Introducing Erlang_.
 
 
-****************
-Simon, I have two options here: I can give details about the
-design, or a broad outline. Here's the detail version
-*****************
-
 In my code, the dealer had to keep track of:
 
 * The process IDs of the players (this was a list)
@@ -128,19 +123,6 @@ is a winner, give that player the pile plus the cards currently in play.
 If the cards match, add the cards currently in play to the pile, and
 go back to "Pre-battle" state.
 
-****************
-And now, the broad outline version
-****************
-When you do your design, think about what the players have to keep
-track of and what the dealer has to keep track of (it's a lot more).
-
-You might want to think about the game as a state machine; the
-game is in one of several phases (or states) at any point, and proceeds
-to a different state depending upon the cards given or received.
-
-******************
-OK, back to our regularly scheduled program.
-******************
 Messages Are Asynchronous
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Remember that the order in which a process receives messages may
