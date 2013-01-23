@@ -13,7 +13,7 @@ the area is +A * B / 2.0+, with +A+ and +B+ representing
 the base and height of the triangle. For an +ellipse+ atom, the area is 
 +math:pi() * A * B+, where +A+ and +B+ represent the major and minor radiuses.
 
-Here is what it should look like when you run the program:
+Here is some sample output.
 
 [source,erl]
 ----
@@ -36,7 +36,7 @@ You will want two guards for each pattern to make sure that both dimensions
 are greater than or equal to zero. Since *both* have to be non-negative, use
 commas to separate your guards.
 
-Here's what it will look like when you run the program:
+Here is some sample output.
 
 [source,erl]
 ----
@@ -62,7 +62,7 @@ rectangle, triangle, or ellipse will return zero. This goes against
 the Erlang philosophy of ``let it fail,'' but let's look the other way
 and learn about underscores anyway.
 
-Here's what it looks like when you run the program:
+Here is some sample output.
 
 [source,erl]
 ----
@@ -81,9 +81,9 @@ Here's what it looks like when you run the program:
 Add an +area/1+ function that takes a tuple of the form
 +{*shape*,*number*,*number*}+ as its parameter. Export it
 instead of +area/3+. The +area/1+ function will call the
-private +area/3+ function.
+call the private +area/3+ function.
 
-Here is what it looks like when you run the program:
+Here is some sample output.
 
 [source,erl]
 ----
