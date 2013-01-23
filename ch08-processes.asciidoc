@@ -123,6 +123,9 @@ is a winner, give that player the pile plus the cards currently in play.
 If the cards match, add the cards currently in play to the pile, and
 go back to "Pre-battle" state.
 
+Note that this is my implementation; you may find an entirely
+different and better way to write the program.
+
 Messages Are Asynchronous
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Remember that the order in which a process receives messages may
