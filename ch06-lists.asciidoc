@@ -80,7 +80,7 @@ Add a function +julian/1+ to the +dates+ module that you wrote in
 <<CH05-ET02, Étude 5-2>>. Given a string in ISO format (+"yyyy-mm-dd"+), it
 returns the Julian date: the day of the year.
 
-Here's what it looks like when you run it.
+Here is some sample output.
 
 [source, erl]
 ----
@@ -355,7 +355,7 @@ for the same input. Since these functions aren't "pure," it's best to isolate
 them in a module of their own.
 
 In this étude, create a module named +non_fp+, and write a function 
-+generate_teeth/2+. This function has a string consisting of the characters
++generate_teeth/3+. This function has a string consisting of the characters
 +T+ and +F+ for its first argument.
 A +T+ in the string indicates that the tooth is present, and a
 +F+ indicates a missing tooth. In Erlang, a string is a list of characters,
@@ -366,7 +366,7 @@ The second argument is a floating point
 number between 0 and 1.0 that indicates the probability that a tooth will be
 a good tooth.
 
-Here are the helper functions I needed:
+These are the helper functions I needed:
 
 +generate_teeth/3+::
   The first two arguments are the same as for +generate_teeth/2+; the
