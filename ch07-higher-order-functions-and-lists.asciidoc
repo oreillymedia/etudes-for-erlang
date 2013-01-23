@@ -192,6 +192,19 @@ of cards as a list 52 tuples in this form:
  {"K", "Diamonds"},
  {"K", "Hearts"},
  {"K", "Spades"}]
+ 
+[NOTE]
+When you run this function, your output will not show the entire list; it will
+show something that ends like this. Don't freak out.
+
+[literal]
+
+{7,"Clubs"},
+{7,"Diamonds"},
+{7,[...]},
+{7,...},
+{...}|...]
+
 
 [[CH07-ET06]]
 Étude 7-6
