@@ -17,12 +17,12 @@ You want to those to crash infrequently and catch as many input errors as possib
 
 In this étude, you will write a module named +ask_area+, which prompts you
 for a shape and its dimensions, and then returns the area by calling
-+geom:area/3+, which you wrote in <<CH04-ET1,Étude 4-1>>.
++geom:area/3+, which you wrote in <<CH04-ET01,Étude 4-1>>.
 
 Your module will ask for the first letter of the shape (in either upper
 or lower case), then the appropriate dimensions. It should catch invalid
 letters, non-numeric input, and negative numbers as input.
-Here's what a run of the program looks like:
+Here is some sample output.
 
 [source, erl]
 -------
