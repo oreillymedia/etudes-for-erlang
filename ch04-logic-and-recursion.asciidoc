@@ -27,7 +27,7 @@ To find the GCD of integers M and N:
 
 Write a function +gcd/2+ in a module named +dijkstra+ that implements
 the algorithm. This program is an ideal place to use Erlang's +if+ construct. 
-Here's what it will look like when you run the program:
+Here is some sample output.
 
 [source,erl]
 ----
@@ -68,8 +68,7 @@ Here's the information you need to know to write the function:
   there's your recursion.
 * When +N+ is negative, +X^N^+ is equal to +1.0 / X^N^+
 
-Note that this function is _not_ tail recursive. Here is what its output
-looks like:
+Note that this function is _not_ tail recursive.  Here is some sample output.
 
 [source, erl]
 -------
@@ -140,7 +139,7 @@ will simply be this:
 +nth_root(X, N) -> nth_root(X, N, X / 2.0)+
 
 Use +io:format+ to show each new approximation as you
-calculate it. Here's what the program will look like when you run it.
+calculate it. Here is some sample output.
 
 [source,erl]
 ----
