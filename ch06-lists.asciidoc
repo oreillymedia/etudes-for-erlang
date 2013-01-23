@@ -10,8 +10,7 @@ a list of numbers as its argument and returns the smallest value. This
 function already exists in the +lists+ module (+lists:min/1+), but it's
 a good exercise in learning about recursion.
 
-Here's the pseudocode. _Simon: should I give this pseudocode, or let people
-figure it on their own?_
+Here's the pseudocode.
 
 * Call function +minimum/2+, which takes the list as its first argument and
 the "smallest number so far" (the _current candidate_) as its second argument.
