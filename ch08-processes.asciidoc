@@ -2,7 +2,7 @@
 Études for Chapter 8: Processes
 -------------------------------
 
-[[CH08-ET1]]
+[[CH08-ET01]]
 Étude 8-1
 ~~~~~~~~~
 There is only one étude for this chapter. You're going to
