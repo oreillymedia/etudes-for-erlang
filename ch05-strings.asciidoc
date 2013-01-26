@@ -2,7 +2,7 @@
 Études for Chapter 5: Strings
 -----------------------------
 
-[[CH05-ET1]]
+[[CH05-ET01]]
 Étude 5-1
 ~~~~~~~~~
 The Erlang philosophy is "let it crash"; this makes a great deal of sense
@@ -88,7 +88,7 @@ program work.
   appropriate error message. Otherwise, the function calls
   +geom:area/3+ to calculate the area of the shape.
 
-[[CH05-ET2]]
+[[CH05-ET02]]
 Étude 5-2
 ~~~~~~~~~
 Write a module named +dates+ that contains a function
