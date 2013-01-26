@@ -46,6 +46,9 @@ deisre. Handle the following situtations:
 * Deposits of $10,000 or more might be subject to hold (warning)
 * All other transactions are successful (informational)
 
+Use +get_number/1+ from <<CH05-ET01,Étude 5-1>> to allow either integer
+or float input.
+
 Here is sample output. Due to Erlang's asynchronous nature,
 the user prompts and logging are often interleaved in the most inconvenient
 places. 
