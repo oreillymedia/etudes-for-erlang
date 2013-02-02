@@ -1,0 +1,2 @@
+-record(inventory, {sku, description, quantity=0}).
+

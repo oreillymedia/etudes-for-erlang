@@ -1,0 +1,46 @@
+[[STORING-STRUCTURED-DATA]]
+Études for Chapter 10: Storing Structured Data
+----------------------------------------------
+
+[[CH10-ET01]]
+Étude 10-1
+~~~~~~~~~~
+In honor of Erlang's heritage as a language designed for
+telephony applications, this étude will set up a small
+database that keeps track of phone calls.
+
+Part One
+^^^^^^^^
+Create a file named +phone_records.hrl+ that defines records
+with these fields.
+
+The first record type will store information about individual phone calls.
+All of the fields will be strings.
+
+* Phone number
+* Starting date (month, day, and year)
+* Starting time (hours, minutes, and seconds)
+* End date (month, day, and year)
+* End time (hours, minutes, and seconds)
+
+The second record type will store information about the person associated
+with each phone number.
+
+* Phone number
+* Last name (family name)
+* First name (given name)
+* Middle name
+* Rate per minute (float)
+
+You may name the records whatever you wish, and you may use any
+field names you wish.
+
+Part Two
+^^^^^^^^
+Create an ETS table for the phone call data. You could do this by
+entering the data from tuples or individual +ets:insert+ calls,
+but instead, copy the following text into a file named
++call_data.csv+ and save the file in the same directory where you
+did part one.
+
+408-555-1212,2013-02-01,
