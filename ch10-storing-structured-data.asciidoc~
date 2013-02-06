@@ -104,11 +104,7 @@ Part Three
 ^^^^^^^^^^
 Write functions to summarize the number of minutes for a single
 phone number (+summary/1+) or for all phone numbers.
-(+summary/0+). The one-argument function returns a list in the form:
-
-+[_phoneNumber_, _minutes_]]+
-
-The zero-argument function returns a list of lists in the form:
+(+summary/0+). The function returns a list of lists in the form:
 
 +[[_phoneNumber1_, _minutes_],[_phoneNumber2_, _minutes_], ...]+
 
@@ -133,12 +129,4 @@ tuple in the form:
 
 Round up any number of seconds to the next minute in the total. Thus, if
 the total time is 4 minutes and 6 seconds, round it up to 5 minutes.
-
-****
-Now might be the time to rewrite part two so that your dates and times
-are stored in the appropriate format. That way, you do the conversion
-from string to tuple only once, instead of every time you ask
-for a summary.
-****
-
 
