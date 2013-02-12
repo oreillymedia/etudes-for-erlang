@@ -1,10 +1,10 @@
 [[LISTS]]
-Études for Chapter 6: Lists
------------------------------
+Lists
+-----
 
 [[CH06-ET01]]
-Étude 6-1
-~~~~~~~~~
+Étude 6-1: Recursive Iteration through a List
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In a module named +stats+, write a function named +minimum/1+. It takes
 a list of numbers as its argument and returns the smallest value. This
 function already exists in the +lists+ module (+lists:min/1+), but it's
@@ -48,8 +48,8 @@ list can't really be said to have a minimum value.
 -----
 
 [[CH06-ET02]]
-Étude 6-2
-~~~~~~~~~
+Étude 6-2: Iteration through Lists (More Practice)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add two more functions to the +stats+ module:
 
 +maximum/1+, which is just
@@ -73,8 +73,8 @@ list of two numbers: the minimum and maximum entries in the list.
 ------
 
 [[CH06-ET03]]
-Étude 6-3
-~~~~~~~~~
+Étude 6-3: Accumulating the Sum of a List
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add a function +julian/1+ to the +dates+ module that you wrote in
 <<CH05-ET02, Étude 5-2>>. Given a string in ISO format (+"yyyy-mm-dd"+), it
 returns the Julian date: the day of the year.
@@ -254,8 +254,8 @@ to do so, and you certainly won't be the last.
 OK. Back to work.
 
 [[CH06-ET04]]
-Étude 6-4
-~~~~~~~~~
+Étude 6-4: Lists of Lists
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Dentists check the health of your gums by checking the depth of the "pockets"
 at six different locations around each of your 32 teeth.
 The depth is measured in millimeters. If any of the depths is greater
@@ -295,8 +295,8 @@ And here's the output:
 ----
 
 [[CH06-ET05]]
-Étude 6-5
-~~~~~~~~~
+Étude 6-5: Random Numbers; Generating Lists of Lists
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 How do you think I got the numbers for the teeth in the preceding étude?
 Do you really think I made up and typed all 180 of them? No, of course not.
 Instead, I wrote an Erlang program to create the list of lists for me,

@@ -1,10 +1,10 @@
 [[HIGHER-ORDER_FNS]]
-Études for Chapter 7: Higher Order Functions and List Comprehensions
---------------------------------------------------------------------
+Higher Order Functions and List Comprehensions
+----------------------------------------------
 
 [[CH07-ET01]]
-Étude 7-1
-~~~~~~~~~
+Étude 7-1: Simple Higher Order Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In calculus, the derivative of a function is "a measure of how a function
 changes as its input changes"
 (http://en.wikipedia.org/wiki/Derivative[Wikipedia]). For example,
@@ -50,8 +50,8 @@ you can define the function in line.
 with the word +fun+ followed by the +__module__:__function__/__arity__+.
 
 [[CH07-ET02]]
-Étude 7-2
-~~~~~~~~~
+Étude 7-2: List Comprehensions and Pattern Matching
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Is it possible to use pattern matching inside a list comprehension? Try
 it and find out.
 
@@ -85,8 +85,8 @@ parentheses, though it doesn't hurt to have them. Another advantage of
 +orelse+ is that it doesn't do any unnecessary comparisons.
 
 [[CH07-ET03]]
-Étude 7-3
-~~~~~~~~~
+Étude 7-3: Using +lists:foldl/3+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add +mean/1+ and +stdv/1+ functions to the +stats+ module which
 you created in <<CH06-02,Étude 6-2>> to calculate the mean and
 standard deviation for a list of numbers.
@@ -143,8 +143,8 @@ the argument for the accumulator doesn't have to be a single number. It can
 be a list or a tuple.
 
 [[CH07-ET04]]
-Étude 7-4
-~~~~~~~~~
+Étude 7-4: Using +lists:split/2+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use +erl -man lists+ to see how the +lists:split/2+ function works, or try
 the following example and see if you can figure it out. Experiment to see
 what happens if the first argument is zero.
@@ -162,8 +162,8 @@ calculating the total number of days up to (but not including)
 the month in question.
 
 [[CH07-ET05]]
-Étude 7-5
-~~~~~~~~~
+Étude 7-5: Multiple Generators in List Comprehensions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Back to list comprehensions. You can have more than one generator in a list
 comprehension. Try this in +erl+:
 
@@ -215,8 +215,8 @@ show_deck(Deck) ->
 ===========
 
 [[CH07-ET06]]
-Étude 7-6
-~~~~~~~~~
+Étude 7-6: Explaining an Algorithm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You need a way to shuffle the deck of cards. This is the code for
 doing a shuffle, taken from the Literate Programs Wiki.
 

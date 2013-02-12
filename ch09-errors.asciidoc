@@ -1,10 +1,10 @@
 [[PROCESSES]]
-Études for Chapter 9: Errors
-----------------------------
+Handling Errors
+---------------
 
 [[CH09-ET01]]
-Étude 9-1
-~~~~~~~~~
+Étude 9-1: +try+ and +catch+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Update the +stats+ module that you wrote in <<CH07-ET03,Étude 7-3>>
 so that it will catch errors in the +minimum/1+, +maximum/1+,
 +mean/1+ and +stdv/1+ functions.
@@ -26,8 +26,8 @@ Here is some sample output.
 --------
 
 [[CH09-ET02]]
-Étude 9-2
-~~~~~~~~~
+Étude 9-2: Logging Errors
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Write a module named +bank+ that contains a function +account/1+. The
 function takes a numeric +Balance+, which gives the current balance in
 the account in imaginary dollars.

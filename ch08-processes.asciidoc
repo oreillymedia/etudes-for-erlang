@@ -1,17 +1,17 @@
 [[PROCESSES]]
-Études for Chapter 8: Processes
--------------------------------
+Processes
+---------
 
 [[CH08-ET01]]
-Étude 8-1
-~~~~~~~~~
+Étude 8-1: Using Processes to Simulate a Card Game
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 There is only one étude for this chapter. You're going to
 write an Erlang program that lets the computer play the card
 game of "War" against itself.
 
 The Art of War
 ^^^^^^^^^^^^^^
-These are the rules of the game, as condensed from
+These are the rules of the game as condensed from
 http://en.wikipedia.org/wiki/War_%28card_game%29,Wikipedia[Wikipedia], adapted
 to two players, and simplified further.
 

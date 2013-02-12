@@ -1,10 +1,10 @@
 [[STORING-STRUCTURED-DATA]]
-Études for Chapter 10: Storing Structured Data
-----------------------------------------------
+Storing Structured Data
+-----------------------
 
 [[CH10-ET01]]
-Étude 10-1
-~~~~~~~~~~
+Étude 10-1: Using ETS
+~~~~~~~~~~~~~~~~~~~~~
 In honor of Erlang's heritage as a language designed for
 telephony applications, this étude will set up a small
 database that keeps track of phone calls.
@@ -156,8 +156,8 @@ ok
 -----
 
 [[CH10-ET02]]
-Étude 10-2
-~~~~~~~~~~
+Étude 10-2: Using Mnesia
+~~~~~~~~~~~~~~~~~~~~~~~~
 In this étude, you will use query list comprehensions to join data
 from two tables in a Mnesia database of veterinarian appointments for cats.
 

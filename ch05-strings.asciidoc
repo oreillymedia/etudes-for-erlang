@@ -1,10 +1,10 @@
 [[STRINGS]]
-Études for Chapter 5: Strings
------------------------------
+Strings
+-------
 
 [[CH05-ET01]]
-Étude 5-1
-~~~~~~~~~
+Étude 5-1: Validating Input
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Erlang philosophy is "let it crash"; this makes a great deal of sense
 for a telecommunications system (which is what Erlang was first designed for).
 Hardware is going to fail. When it does, you just replace it or restart it.
@@ -89,8 +89,8 @@ program work.
   +geom:area/3+ to calculate the area of the shape.
 
 [[CH05-ET02]]
-Étude 5-2
-~~~~~~~~~
+Étude 5-2: Using the +re+ Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Write a module named +dates+ that contains a function
 +date_parts/1+, which takes a string in ISO date format
 (+"yyyy-mm-dd"+) and

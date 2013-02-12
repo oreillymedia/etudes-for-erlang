@@ -1,18 +1,18 @@
 [[LOGIC-RECURSION]]
-Études for Chapter 4: Logic and Recursion
------------------------------------------
+Logic and Recursion
+-------------------
 
 [[CH04-ET01]]
-Étude 4-1
-~~~~~~~~~
+Étude 4-1: Using +case+
+~~~~~~~~~~~~~~~~~~~~~~~
 Change the +area/3+ function that you wrote in
 <<CH03-ET02,Étude 3-2>> so that it uses a +case+ instead
 of pattern matching. Use a guard on the function definition to ensure
 that the numeric arguments are both greater than zero.
 
 [[CH04-ET02]]
-Étude 4-2
-~~~~~~~~~
+Étude 4-2: Recursion
+~~~~~~~~~~~~~~~~~~~~
 This is a typical exercise for recursion: finding the greatest common
 divisor (GCD) of two integers. Instead of giving Euclid's method, we'll
 do this with a method devised by Edsger W. Dijkstra. The neat part about
@@ -53,8 +53,8 @@ wonder why I'm asking you to re-invent the wheel. The reason is not to replace
 expressed quite nicely that way.
 
 [[CH04-ET03]]
-Étude 4-3
-~~~~~~~~~
+Étude 4-3: Non-Tail Recursive Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a module named +powers+ (no relation to Francis Gary Powers), and
 write a function named +raise/2+ which takes parameters +X+  and +N+ and
 returns the value of X^N^.
@@ -87,8 +87,8 @@ Note that this function is _not_ tail recursive.  Here is some sample output.
 ------
 
 [[CH04-ET04]]
-Étude 4-4
-~~~~~~~~~
+Étude 4-4: Tail Recursion with an Accumulator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Practice the "accumulator trick." 
 Rewrite the +raise/2+ function for +N+ greater than zero so that it
 calls a helper function +raise/3+  This new function has +X+, +N+, and
@@ -109,8 +109,8 @@ and +X+ times the +Accumulator+ as its arguments.
 The +raise/3+ function _is_ tail recursive.
 
 [[CH04-ET05]]
-Étude 4-5
-~~~~~~~~~
+Étude 4-5: Recursion with a Helper Function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In this exercise, you will write a function +nth_root/2+ which finds the
 __n__th root of a number, where _n_ is an integer.
 For example, +nth_root(36, 2)+ will calculate
