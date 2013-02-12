@@ -158,8 +158,13 @@ ok
 [[CH10-ET02]]
 Étude 10-2
 ~~~~~~~~~~
-In this étude, you will create a Mnesia database that contains veterinarian
-appointments for cats. You will need two types of records.
+In this étude, you will use query list comprehensions to join data
+from two tables in a Mnesia database of veterinarian appointments for cats.
+
+Part One
+^^^^^^^^
+You will need two types of records, which you will describe in a
+file named +cat_records.hrl+.
 
 The first record type will store information about the cats and their
 owners.
@@ -168,7 +173,25 @@ owners.
 * Cat's name
 * Owner's name
 
-Put the following initial data in a file named +cats.csv+.
+The second record type contains the appointments.
+
+* Appointment ID number (this is the key)
+* Appointment date in form _yyyy-mm-dd_
+* Cat's ID number
+
+
+You may name the records whatever you wish, and you may use any
+field names you wish, and if you prefer other file names, you may change those.
+
+Part Two
+^^^^^^^^
+In a module named +cat_db+,
+create the Mnesia tables for the two files. The function
+that does this will be named +setup/2+, and its arguments will be the
+names of the file containing the data.
+
+Here is the data for the cats, which you can put
+in a file named +cats.csv+.
 
 ----
 1,Marco,David Evans
@@ -184,13 +207,8 @@ Put the following initial data in a file named +cats.csv+.
 11,Bob,Truong Tran
 ----
 
-The second record type contains the appointments.
-
-* Appointment ID number (this is the key)
-* Appointment date in form _yyyy-mm-dd_
-* Cat's ID number
-
-And here is the initial data, in a file named +appointments.csv+
+Here is the data for the appointments, which you can put in a
+file named +appointments.csv+.
 
 ----
 1,2013-06-03,2
@@ -205,16 +223,6 @@ And here is the initial data, in a file named +appointments.csv+
 10,2013-06-06,6
 11,2013-06-06,11
 ----
-
-You may name the records whatever you wish, and you may use any
-field names you wish, and if you prefer other file names, you may change those.
-
-Part Two
-^^^^^^^^
-In a module named +cat_db+,
-create the Mnesia tables for the two files. The function
-that does this will be named +setup/2+, and its arguments will be the
-names of the file containing the data.
 
 NOTE: You could write two functions that all open a file, read data,
 split it into fields, write the data to the Mnesia table, and then keep
@@ -255,4 +263,8 @@ ok
 [{"Jasper","David Evans"},{"Spot","Truong Tran"}]
 ----
 
+NOTE: You may have noticed that the list of cat and owner names could have been
+normalized into two separate tables. If you do the normalization, you will then have to
+join from three tables, and Erlang will complain that joins from more than two
+tables are not efficient.
 

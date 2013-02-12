@@ -29,7 +29,7 @@ Here is some sample output.
 Document the +geom+ module you wrote in <<CH02-ET1,Étude 2-1>>.
 
 [[CH02-ET3]]
-Étude 3
+Étude 2-3
 ~~~~~~~
 Document the +area/2+ function, and create an _overview.edoc_ file to complete
 the documentation of the application you've written.
