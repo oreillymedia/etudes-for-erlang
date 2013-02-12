@@ -104,13 +104,9 @@ Part Three
 ^^^^^^^^^^
 Write functions to summarize the number of minutes for a single
 phone number (+summary/1+) or for all phone numbers.
-(+summary/0+). The one-argument function returns a list in the form:
+(+summary/0+). These functions return a list of tuples in the form:
 
-+[_phoneNumber_, _minutes_]]+
-
-The zero-argument function returns a list of lists in the form:
-
-+[[_phoneNumber1_, _minutes_],[_phoneNumber2_, _minutes_], ...]+
++[{_phoneNumber1_, _minutes_]},{_phoneNumber2_, _minutes_}, ...]+
 
 You could write your own code to do time and date calculations to
 figure out the duration of a phone call, but there's a limit on how
@@ -131,14 +127,132 @@ tuple in the form:
 {{2013, 07, 14}, {14, 49, 21}}
 -----
 
-Round up any number of seconds to the next minute in the total. Thus, if
-the total time is 4 minutes and 6 seconds, round it up to 5 minutes.
+Round up any number of seconds to the next minute for ech call. Thus, if
+a call lasts 4 minutes and 6 seconds, round it up to 5 minutes.
+Hint: add 59 to the total number of seconds before you +div 60+.
 
-****
-Now might be the time to rewrite part two so that your dates and times
+NOTE: Now might be the time to rewrite part two so that your dates and times
 are stored in the appropriate format. That way, you do the conversion
 from string to tuple only once, instead of every time you ask
 for a summary.
-****
+
+Here is the sample output.
+
+[source, erl]
+-----
+1> c(phone_ets).
+{ok,phone_ets}
+2> phone_ets:setup("call_data.csv").
+ok
+3> phone_ets:summary("415-555-7871").
+[{"415-555-7871",7}]
+4> phone_ets:summary().
+[{"946-555-9760",3},
+ {"415-555-7871",7},
+ {"729-555-8855",6},
+ {"301-555-0433",12},
+ {"213-555-0172",9},
+ {"650-555-3326",11}]
+-----
+
+[[CH10-ET02]]
+Étude 10-2
+~~~~~~~~~~
+In this étude, you will create a Mnesia database that contains veterinarian
+appointments for cats. You will need two types of records.
+
+The first record type will store information about the cats and their
+owners.
+
+* Cat's ID number (this is the key)
+* Cat's name
+* Owner's name
+
+Put the following initial data in a file named +cats.csv+.
+
+----
+1,Marco,David Evans
+2,Jasper,David Evans
+3,Boris,Cathy King
+4,Natasha,Cathy King
+5,Izzy,Sachiko Morita
+6,Romeo,Sachiko Morita
+7,Kaz,Sachiko Morita
+8,Autumn,Esteban Espinoza
+9,Winter,Esteban Espinoza
+10,Spot,Truong Tran
+11,Bob,Truong Tran
+----
+
+The second record type contains the appointments.
+
+* Appointment ID number (this is the key)
+* Appointment date in form _yyyy-mm-dd_
+* Cat's ID number
+
+And here is the initial data, in a file named +appointments.csv+
+
+----
+1,2013-06-03,2
+2,2013-06-03,10
+3,2013-06-04,5
+4,2013-06-04,7
+5,2013-06-04,8
+6,2013-06-05,9
+7,2013-06-05,3
+8,2013-06-06,4
+9,2013-06-06,1
+10,2013-06-06,6
+11,2013-06-06,11
+----
+
+You may name the records whatever you wish, and you may use any
+field names you wish, and if you prefer other file names, you may change those.
+
+Part Two
+^^^^^^^^
+In a module named +cat_db+,
+create the Mnesia tables for the two files. The function
+that does this will be named +setup/2+, and its arguments will be the
+names of the file containing the data.
+
+NOTE: You could write two functions that all open a file, read data,
+split it into fields, write the data to the Mnesia table, and then keep
+going until end-of-file. These would share a lot of common code. Instead,
+try writing just one function that does the reading, and pass a higher-order
+function to it to do the appropriate "split-and-write" operation.
+
+
+Part Three
+^^^^^^^^^^
+Write a function named +list_appointments/3+ that takes a year, month, and day
+as its arguments. It produces a list of cats and their owners' names for
+all people who have appointments on the given day. Use a query list
+comprehension to join the tables.
+
+Hint: Get all the appointments and cats, where:
+
+* The appointment date is the given day
+* The cat's ID in the appointment equals the ID in the cat's record
+
+Here is some sample output:
+
+[source,erl]
+----
+1> c(cat_db).
+{ok,cat_db}
+2> cat_db:setup("cats.csv", "appointments.csv").
+Transaction result {atomic,ok}
+Transaction result {atomic,ok}
+ok
+3> cat_db:list_appointments(2013, 6, 4).
+[{"Izzy","Sachiko Morita"},
+ {"Kaz","Sachiko Morita"},
+ {"Autumn","Esteban Espinoza"}]
+4> cat_db:list_appointments(2013, 6, 2).
+[]
+5> cat_db:list_appointments(2013, 6, 3).
+[{"Jasper","David Evans"},{"Spot","Truong Tran"}]
+----
 
 

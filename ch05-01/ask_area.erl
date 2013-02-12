@@ -29,6 +29,9 @@ area() ->
 
 %% @doc Given a character, returns an atom representing the
 %% specified shape (or the atom unknown if a bad character is given).
+
+-spec(char_to_shape(char()) -> atom()).
+
 char_to_shape(Char) ->
   case Char of
     $R -> rectangle;
@@ -42,6 +45,9 @@ char_to_shape(Char) ->
 
 %% @doc Present a prompt and get a number from the
 %% user. Allow either integers or floats.
+
+-spec(get_number(string()) -> number()).
+
 get_number(Prompt) ->
   Str = io:get_line("Enter " ++ Prompt ++ " > "),
   {Test, _} = string:to_float(Str),
@@ -53,6 +59,9 @@ get_number(Prompt) ->
 
 %% @doc Get dimensions for a shape. Input are the two prompts,
 %% output is a tuple {Dimension1, Dimension2}.
+
+-spec(get_dimensions(string(), string()) -> {number(), number()}).
+
 get_dimensions(Prompt1, Prompt2) ->
   N1 = get_number(Prompt1),
   N2 = get_number(Prompt2),
@@ -60,6 +69,9 @@ get_dimensions(Prompt1, Prompt2) ->
 
 %% @doc Calculate area of a shape, given its shape and dimensions.
 %% Handle errors appropriately.
+
+-spec(calculate(atom(), number(), number()) -> number()).
+
 calculate(unknown, _, Err) -> io:format("~s~n", [Err]);
 calculate(_, error, _) -> io:format("Error in first number.~n");
 calculate(_, _, error) -> io:format("Error in second number.~n");

@@ -9,7 +9,7 @@
 %% @doc Returns the minimum item in a list of numbers. Fails when given
 %% an empty list, as there's nothing reasonable to return.
 
--spec(minimum(list()) -> number()).
+-spec(minimum(list(number())) -> number()).
 
 minimum(NumberList) ->
   minimum(NumberList, hd(NumberList)).

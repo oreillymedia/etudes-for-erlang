@@ -13,7 +13,7 @@
 %% math:pi times the product of the arguments for
 %% an ellipse.
 
--spec(area(atom(), number(),number()) -> number()).
+-spec(area(atom(), number(), number()) -> number()).
 
 area(Shape, A, B) when A >= 0, B >= 0 ->
   case Shape of

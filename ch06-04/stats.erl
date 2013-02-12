@@ -9,7 +9,7 @@
 %% @doc Returns the minimum item in a list of numbers. Fails when given
 %% an empty list, as there's nothing reasonable to return.
 
--spec(minimum(list()) -> number()).
+-spec(minimum([number()]) -> number()).
 
 minimum(NumberList) ->
   minimum(NumberList, hd(NumberList)).
@@ -25,7 +25,7 @@ minimum([Head|Tail], Result) ->
 %% @doc Returns the maximum item in a list of numbers. Fails when given
 %% an empty list, as there's nothing reasonable to return.
 
--spec(maximum(list()) -> number()).
+-spec(maximum([number()]) -> number()).
 
 maximum(NumberList) ->
   maximum(NumberList, hd(NumberList)).
@@ -40,7 +40,7 @@ maximum([Head|Tail], Result) ->
 
 %% @doc Return the range (maximum and minimum) of a list of numbers
 %% as a two-element list.
--spec(range(list()) -> list()).
+-spec(range([number()]) -> [number()]).
 
 range(NumberList) -> [minimum(NumberList), maximum(NumberList)].
 

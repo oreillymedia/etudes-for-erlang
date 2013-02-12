@@ -8,9 +8,13 @@
 
 %% @doc Create a list of tooth numbers that require attention.
 
--spec(alert(list()) -> list()).
+-spec(alert[integer()]) -> [integer()]).
 
 alert(ToothList) -> alert(ToothList, 1, []).
+
+%% @doc Helper function that accumulates the list of teeth needing attention
+
+-spec(alert([integer()], integer(), [integer()]) -> [integer()]).
 
 alert([], _Tooth_number, Result) -> lists:reverse(Result);
 

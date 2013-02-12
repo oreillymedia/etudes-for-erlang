@@ -21,22 +21,32 @@ date_parts(DateStr) ->
 %% @doc Takes a string in ISO date format (yyyy-mm-dd) and
 %% returns the day of the year (Julian date).
 
--spec(julian(list()) -> integer()).
+-spec(julian(string()) -> integer()).
 
 julian(DateStr) ->
   DaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
   [Y, M, D] = date_parts(DateStr),
   julian(Y, M, D, DaysPerMonth, 0).
 
+%% @doc Helper function that recursively accumulates the number of days
+%% up to the specified date.
+
+-spec(julian(integer(), integer(), integer(), [integer()], integer) -> integer()).
+
 julian(Y, M, D, MonthList, Total) when M > 13 - length(MonthList) ->
   [ThisMonth|RemainingMonths] = MonthList,
   julian(Y, M, D, RemainingMonths, Total + ThisMonth);
 
-julian(Y, M, D, _Month_list, Total) ->
+julian(Y, M, D, _MonthList, Total) ->
   case M > 2 andalso is_leap_year(Y) of 
     true -> Total + D + 1;
     false -> Total + D
   end.
+
+%% @doc Given a year, return true or false depending on whether
+%% the year is a leap year.
+
+-spec(is_leap_year(integer()) -> boolean()).
 
 is_leap_year(Year) ->
   (Year rem 4 == 0 andalso Year rem 100 /= 0)

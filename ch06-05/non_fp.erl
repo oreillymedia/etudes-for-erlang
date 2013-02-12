@@ -11,11 +11,15 @@
 %% pocket depths. Takes a string where T="there's a tooth there"
 %% and F="no tooth"), and a float giving probability that a tooth is good.
 
--spec(generate_teeth(list(), float()) -> list()).
+-spec(generate_teeth(string(), float()) -> list(list(integer()))).
 
 generate_teeth(TeethPresent, ProbGood) ->
   random:seed(now()),
   generate_teeth(TeethPresent, ProbGood, []).
+
+%% @doc Helper function that adds tooth data to the ultimate result.
+
+-spec(generate_teeth(string(), float(), [[integer()]]) -> [[integer()]]).
 
 generate_teeth([], _Prob, Result) -> lists:reverse(Result);
 
@@ -26,7 +30,7 @@ generate_teeth([$T | Tail], ProbGood, Result) ->
   generate_teeth(Tail, ProbGood,
   [generate_tooth(ProbGood) | Result]).
 
--spec(generate_tooth(float()) -> list()).
+-spec(generate_tooth(float()) -> list(integer())).
 
 %% @doc Generates a list of six numbers for a single tooth. Choose a
 %% random number between 0 and 1. If that number is less than the probability

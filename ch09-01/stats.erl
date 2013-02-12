@@ -54,7 +54,7 @@ maximum([Head|Tail], Result) ->
 range(NumberList) -> [minimum(NumberList), maximum(NumberList)].
 
 %% @doc Return the mean of the list.
--spec(mean(list) -> float()).
+-spec(mean(list()) -> float()).
 
 mean(NumberList) ->
   try
@@ -64,10 +64,19 @@ mean(NumberList) ->
     error:Error -> {error, Error}
   end.
 
+%% @doc Helper function to generate sums and sums of squares
+%% when calculating standard deviation.
+
+-spec(stdv_sums(number(),[number()]) -> [number()]).
+
 stdv_sums(Value, Accumulator) ->
   [Sum, SumSquares] = Accumulator,
   [Sum + Value, SumSquares + Value * Value].
-  
+
+%% @doc Calculate the standard deviation of a list of numbers.
+
+-spec(stdv([number()]) -> float()).
+
 stdv(NumberList) ->
   N = length(NumberList),
   try
