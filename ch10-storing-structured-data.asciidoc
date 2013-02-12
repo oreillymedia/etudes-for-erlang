@@ -11,11 +11,8 @@ database that keeps track of phone calls.
 
 Part One
 ^^^^^^^^
-Create a file named +phone_records.hrl+ that defines records
-with these fields.
-
-The first record type will store information about individual phone calls.
-All of the fields will be strings.
+Create a file named +phone_records.hrl+ that defines a record
+with these fields:
 
 * Phone number
 * Starting date (month, day, and year)
@@ -23,16 +20,7 @@ All of the fields will be strings.
 * End date (month, day, and year)
 * End time (hours, minutes, and seconds)
 
-The second record type will store information about the person associated
-with each phone number.
-
-* Phone number
-* Last name (family name)
-* First name (given name)
-* Middle name
-* Rate per minute (float)
-
-You may name the records whatever you wish, and you may use any
+You may name the record whatever you wish, and you may use any
 field names you wish.
 
 Part Two
