@@ -48,11 +48,21 @@ read_item(InputFile) ->
     RawData == eof -> ok
   end.
 
+%% @doc Convert a string in form "yyyy-mm-dd" to a tuple {yyyy, mm, dd}
+%% suitable for use with the calendar module.
+
+-spec(to_date(string()) -> {integer(), integer(), integer()}).
+
 to_date(Date) ->
   [Year, Month, Day] = re:split(Date, "-", [{return, list}]),
   [{Y, _}, {M, _}, {D, _}] = lists:map(fun string:to_integer/1,
     [Year, Month, Day]),
   {Y, M, D}.
+
+%% @doc Convert a string in form "hh:mm:ss" to a tuple {hh, mm, ss}
+%% suitable for use with the calendar module.
+
+-spec(to_time(string()) -> {integer(), integer(), integer()}).
 
 to_time(Time) ->
   [Hour, Minute, Second] = re:split(Time, ":", [{return, list}]),

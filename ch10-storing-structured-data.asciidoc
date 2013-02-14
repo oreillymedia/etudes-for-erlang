@@ -146,113 +146,184 @@ ok
 [[CH10-ET02]]
 Étude 10-2: Using Mnesia
 ~~~~~~~~~~~~~~~~~~~~~~~~
-In this étude, you will use query list comprehensions to join data
-from two tables in a Mnesia database of veterinarian appointments for cats.
+I have good news and bad news. First, the bad news. Mnesia is _not_
+a relational detabase management system. If you try to use a query
+list comprehension to join three tables, Erlang will complain that joins
+with more than two tables are not efficient.
+
+Now, the good news. While trying to find a way around this, I discovered
+something about query list comprehensions that is really pretty neat, and I'm 
+happy to share it with you.
+
+In this étude, you will use add a table of customer names and
+use Mnesia query list comprehensions to join data
+from those tables when producing a summary.
 
 Part One
 ^^^^^^^^
-You will need two types of records, which you will describe in a
-file named +cat_records.hrl+.
+You will need to add a record for customers to +phone_records.hrl+. Its fields
+will be:
 
-The first record type will store information about the cats and their
-owners.
+* Phone Number (this is the key)
+* Customer's last name
+* Customer's first name
+* Customer's middle name
+* Rate paid per minute (float)
 
-* Cat's ID number (this is the key)
-* Cat's name
-* Owner's name
-
-The second record type contains the appointments.
-
-* Appointment ID number (this is the key)
-* Appointment date in form _yyyy-mm-dd_
-* Cat's ID number
-
-
-You may name the records whatever you wish, and you may use any
-field names you wish, and if you prefer other file names, you may change those.
+Again, you may name the record whatever you wish, and you may use any
+field names you wish.
 
 Part Two
 ^^^^^^^^
-In a module named +cat_db+,
+In a module named +phone_mnesia+,
 create the Mnesia tables for the two files. The function
 that does this will be named +setup/2+, and its arguments will be the
 names of the file containing the data.
 
-Here is the data for the cats, which you can put
-in a file named +cats.csv+.
+Use the phone call data from <<ET10-01,Étude 10-11>>, and
+use this data for the customers. Put it in a file named
++customer_data.csv+ or whatever other name you wish.
 
 ----
-1,Marco,David Evans
-2,Jasper,David Evans
-3,Boris,Cathy King
-4,Natasha,Cathy King
-5,Izzy,Sachiko Morita
-6,Romeo,Sachiko Morita
-7,Kaz,Sachiko Morita
-8,Autumn,Esteban Espinoza
-9,Winter,Esteban Espinoza
-10,Spot,Truong Tran
-11,Bob,Truong Tran
+213-555-0172,Nakamura,Noriko,,0.12
+301-555-0433,Ekberg,Erik,Engvald,0.07
+415-555-7871,Alvarez,Alberto,Agulto,0.15
+650-555-3326,Girard,Georges,Gaston,0.10
+729-555-8855,Tran,Truong,Thai,0.09
+838-555-1099,Smith,Samuel,Steven,0.10
+946-555-9760,Bobrov,Bogdan,Borisovitch,0.14
 ----
 
-Here is the data for the appointments, which you can put in a
-file named +appointments.csv+.
-
-----
-1,2013-06-03,2
-2,2013-06-03,10
-3,2013-06-04,5
-4,2013-06-04,7
-5,2013-06-04,8
-6,2013-06-05,9
-7,2013-06-05,3
-8,2013-06-06,4
-9,2013-06-06,1
-10,2013-06-06,6
-11,2013-06-06,11
-----
-
-NOTE: You could write two functions that all open a file, read data,
+You could write two functions that all open a file, read data,
 split it into fields, write the data to the Mnesia table, and then keep
 going until end-of-file. These would share a lot of common code. Instead,
 try writing just one function that does the reading, and pass a higher-order
 function to it to do the appropriate "split-and-write" operation.
 
+When I solved this problem, my +fill_table/5+ function took these 
+arguments:
+
+* The name of the table (an atom)
+* The name of the file to read (a string)
+* The function that adds the data (a higher-order +fun+)
+* The +record_info+ for the field
+* The type of table. The phone call data is a +bag+, the
+customer data is a +set+.
 
 Part Three
 ^^^^^^^^^^
-Write a function named +list_appointments/3+ that takes a year, month, and day
-as its arguments. It produces a list of cats and their owners' names for
-all people who have appointments on the given day. Use a query list
-comprehension to join the tables.
+Write a function named +summary/3+ that takes a last name, first name,
+and middle name. It produces a tuple that contains the person's phone number,
+total number of minutes, and total cost for those minutes.
 
-Hint: Get all the appointments and cats, where:
+Here is some sample output.
 
-* The appointment date is the given day
-* The cat's ID in the appointment equals the ID in the cat's record
+[source, erl]
+-----
+1> c(phone_mnesia).
+{ok,phone_mnesia}
+2> phone_mnesia:setup("call_data.csv", "customer_data.csv").
+{atomic,ok}
+3> phone_mnesia:summary("Smith", "Samuel", "Steven").       
+[{"838-555-1099",9,0.9}]
+4> phone_mnesia:summary("Nakamura", "Noriko", "").   
+[{"213-555-0172",9,1.08}]
+-----
 
-Here is some sample output:
+Here's the good news about the query list comprehensions.
+In this module, you need to access the
+customer table to match the phone number to the name when collecting the
+calls for the customer. You also need to access the customer table in
+order to access the customer's rate per minute. You don't want to have
+to write the specification for the guards on the customer table twice.
+
+As +Introducing Erlang+ notes, "you can use the +qlc:q+ function to hold a
+list comprehension and the +qlc:e+ function to process it." Specifically,
+the +qlc:q+ function returns a _query handle_ which you can evaluate
+and which you can also use in place of a list name in a query list
+comprehension.
+
+Here's an example. Let's say you have tables of people and their pets.
+In the +pet+ table, the +owner_id+ references the +id_number+ of someone
+in the +person+ table.
+
+[source, erlang]
+------
+-record(person,
+  {id_number, name, age, gender, city, amount_owed}).
+-record(animal,
+  {id_number, name, species, gender, owner_id}).
+------
+
+You could do a query like this to find a
+specific set of people, and then to find information about their pets:
+
+[source, erlang]
+-------
+get_info() ->
+  People = mnesia:transaction(
+    fun() -> qlc:e(
+      qlc:q( [ P ||
+        P <- mnesia:table(person),
+        P#person.age >= 21,
+        P#person.gender == "M",
+        P#person.city == "Podunk"]
+        )
+      )
+    end
+  ),
+  
+  Pets = mnesia:transaction(
+    fun() -> qlc:e(
+      qlc:q( [{A#animal.name, A#animal.species, P#person.name} ||
+        P <- mnesia:table(person),
+        P#person.age >= 21,
+        P#person.gender == "M",
+        P#person.city == "Podunk",
+        A <- mnesia:table(animal),
+        A#animal.owner_id == P#person.id_number])
+      )
+    end
+  ),
+  [People, Pets].
+----
+
+But there's a lot of duplication. Instead, you can make a query list
+handle for the people, and use it again in the animal search. Note
+that you don't have to be in a transacation to create a query handle,
+but you must be in a transaction to process it.
 
 [source,erl]
 ----
-1> c(cat_db).
-{ok,cat_db}
-2> cat_db:setup("cats.csv", "appointments.csv").
-Transaction result {atomic,ok}
-Transaction result {atomic,ok}
-ok
-3> cat_db:list_appointments(2013, 6, 4).
-[{"Izzy","Sachiko Morita"},
- {"Kaz","Sachiko Morita"},
- {"Autumn","Esteban Espinoza"}]
-4> cat_db:list_appointments(2013, 6, 2).
-[]
-5> cat_db:list_appointments(2013, 6, 3).
-[{"Jasper","David Evans"},{"Spot","Truong Tran"}]
+get_info_easier() ->
+  
+  %% "Pre-process" the list comprehension for finding people
+  
+  QHandle = qlc:q( [ P ||
+    P <- mnesia:table(person),
+    P#person.age >= 21,
+    P#person.gender == "M",
+    P#person.city == "Podunk"]
+  ),
+  
+  %% Evaluate it to retrieve the people you want
+  
+  People = mnesia:transaction(
+    fun() -> qlc:e( QHandle ) end
+  ),
+  
+  %% And use the handle again when retrieving
+  %% information about their pets
+  
+  Pets = mnesia:transaction(
+    fun() -> qlc:e(
+      qlc:q( [{A#animal.name, A#animal.species, P#person.name} ||
+        P <- QHandle,
+        A <- mnesia:table(animal),
+        A#animal.owner_id == P#person.id_number])
+      )
+    end
+  ),
+  [People, Pets].
 ----
-
-NOTE: You may have noticed that the list of cat and owner names could have been
-normalized into two separate tables. If you do the normalization, you will then have to
-join from three tables, and Erlang will complain that joins from more than two
-tables are not efficient.
 
