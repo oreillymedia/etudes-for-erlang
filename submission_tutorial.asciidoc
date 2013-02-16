@@ -70,9 +70,9 @@ Your biography should look like this:
 [NOTE]
 ****
 Name:: 
-   Gregor Hophe
+   Nicola Tesla
 Biography:: 
-   Gregor Hohpe is a software engineer with Google. He is best known for his thoughts on asynchronous messaging and service-oriented architectures, which he shares in a number of publications, including the seminal book 
+   Nicola Tesla is an inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electrical supply system.
 ****
 ----
 
