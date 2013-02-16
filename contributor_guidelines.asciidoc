@@ -19,7 +19,6 @@ Keep your title pithy and to the point.::
 Volunteers only.::
    Contributions are made on a volunteer basis — in other words, contributors are not paid for their contributions. The contributions will be made easily available to everyone on the World Wide Web for free. However, remember that those of you whose contributions are chosen for publication will get your name attached to your work, your bio published next to it, and a free copy of the published book. Any item you contribute you can also reuse in any form you wish, such as in a blog posting.
 
-
 Only submit a pull request when you consider your work complete.::
    Please submit your work once it is complete.  Once you make a pull request, the editor will review the submission and (possibly) suggest some changes.  Reducing work in progress makes it easier for you to see your own progress and for others to see the progress of the whole project.
 
