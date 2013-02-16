@@ -1,6 +1,6 @@
 == How To Contribute 
 
-If you're considering making a contribution to the project, here are some guidelines to keep in mind: 
+If you're considering making a contribution, here are some guidelines to keep in mind: 
 
 Submit only your own work.::
    You warrant that all work that you contribute to this site is your original work, except for material that is in the public domain or for which you have obtained permission. Feel free to draw from your own existing work (blogs, articles, talks, etc.), so long as you are happy with the Creative Commons license.
