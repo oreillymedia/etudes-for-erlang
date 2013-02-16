@@ -112,6 +112,6 @@ When you submit the pull request, you'll also be able to submit some additional 
 
 image::https://s3.amazonaws.com/orm-atlas-media/tutorial_pull_request_submission_form.png[]
 
-=== Engage in back-and-forth with your editor
+=== Engage in back-and-forth
 
-Once you submit your pull request, the project's editors will begin a back and forth with you in the discussion features.  You might be asked to make some revisions, shorten it, add additional elements, and so forth.
+Once you submit your pull request, the project's maintainers will begin a back and forth with you in the discussion features.  You might be asked to make some revisions, shorten it, add additional elements, and so forth.
