@@ -107,7 +107,7 @@ image::https://s3.amazonaws.com/orm-atlas-media/tutorial_submit_pull_request.png
 
 When you submit the pull request, you'll also be able to submit some additional information that will help us track your work:
 
-* A title.  Please enter your name and the title of the piece.  For example, "Andrew Odewahn: Always Foo the Bar"
+* A title.  Please enter your name and the title of the contribution.  For example, "Andrew Odewahn: Always Foo the Bar"
 * A comment.  Tell us a little bit about your contribution, as well as anything else you think we should know.
 
 image::https://s3.amazonaws.com/orm-atlas-media/tutorial_pull_request_submission_form.png[]
