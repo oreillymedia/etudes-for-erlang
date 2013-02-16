@@ -1,0 +1,97 @@
+
+== Submission Tutorial
+
+If you're new to git and GitHub and just want to keep things as simple as possible, this tutorial will give you a quick and easy way to make your contribution.  Here are the steps you'll need to follow:
+
+=== Create a GitHub account
+
+To create and edit a page or to comment on an existing page, you will need to create an account on GitHub. If you don't have one already, then go to the https://github.com/signup/free[GitHub Signup page]. It's free.
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_github_signup.png[]
+
+GitHub has excellent tools for collaborating and workflow management, and will be the primary way we communicate with you over the course of the project.
+
+=== Copy ("fork") the project repository to your account 
+
+Once you've got an account, fork (GitHub lingo for copying) the main project to your account.  To do this, go to the  https://github.com/oreillymedia/etudes-for-erlang[Etudes for Erlang] repository on GitHub and click the "Fork" button at the upper right hand side of the screen.
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_click_fork.png[]
+
+The following screen will appear while GitHub copies the repository to your account:
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_forking.png[]
+
+
+=== Click the "+" button next to the directory name to create a new file
+
+Locate the small "\+" sign next to the repository name.  (A tooltip will appear that says "Create a new file here" when you hover your mouse above it.)  Click the "\+" button:
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_add_a_file.png[]
+
+=== Name the file and enter your title
+
+In the new screen: 
+
+* Enter a name for the file.  You should name the file using the convention using your first and last name with an ".asciidoc" at the end.  For example, "andrew_odewahn.asciidoc".
+* Enter the title in the editing box; it should be prefaced with two "==" signs.  For example, "== Always Foo the Bar"
+* Once you've entered the filename and title, the "Commit Changes" button at the bottom of the screen will activate.  Click the button to save your file.
+
+You will see something like this:
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_naming_a_file.png[]
+
+=== Edit your file using AsciiDoc
+
+Once you've got the file created, you can start editing it at your leisure.  Remember to:
+
+* Mark up your text using http://powerman.name/doc/asciidoc[AsciiDoc], which is similar to Markdown and other basic wiki-like markup formats.
+* Change the line wrapping from "No Wrap" to "Soft Wrap."  Otherwise, all your text will appear on a single line.
+
+To edit the file, all you have to do is click its name in the directory listing in GitHub and then press the "Edit" button.  
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_edit.png[]
+
+=== Double check your submission and add your biography
+
+Before you submit your request, make sure that you have:
+
+* Run a spell check
+* Make sure it's 400-500 words in length
+* Add your name, biography, and a link to an image you'd like us to use in the book.  (Please be sure to just send us a link -- don;t check your image into the repository, please.)
+* Check the formatting to make sure it looks OK
+
+Your biography should look like this:
+
+[source, asciidoc]
+----
+
+   .About the Author
+   [NOTE]
+   ****
+   Name:: 
+      Gregor Hophe
+   Biography:: 
+      Gregor Hohpe is a software engineer with Google. He is best known for his thoughts on asynchronous messaging 
+      and service-oriented architectures, which he shares in a number of publications, including the seminal book 
+     Enterprise Integration Patterns. Find out more about his work at http://www.eaipatterns.com.
+   Image::
+      http://programmer.97things.oreilly.com/wiki/images/5/5b/Gregor_hohpe.jpg
+   ****
+----
+
+=== Submit a pull request
+
+Once you've completed and double checked your submission, you're ready to submit it back to O'Reilly.  This is done by creating a "pull request" that will trigger the review process.  
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_submit_pull_request.png[]
+
+When you submit the pull request, you'll also be able to submit some additional information that will help us track your work:
+
+* A title.  Please enter your name and the title of the piece.  For example, "Andrew Odewahn: Always Foo the Bar"
+* A comment.  Tell us a little bit about your contribution, as well as anything else you think we should know.
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_pull_request_submission_form.png[]
+
+=== Engage in back-and-forth with your editor
+
+Once you submit your pull request, the project's editors will begin a back and forth with you in the discussion features.  You might be asked to make some revisions, shorten it, add additional elements, and so forth.
