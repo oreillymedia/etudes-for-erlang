@@ -2,7 +2,7 @@
 Functions and Modules
 ---------------------
 
-[[CH02-ET1]]
+[[CH02-ET01]]
 Étude 2-1: Writing a Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Write a module with a function that takes the length and width of a
@@ -23,12 +23,12 @@ Here is some sample output.
 84
 ----
 
-[[CH02-ET2]]
+[[CH02-ET02]]
 Étude 2-2: Documenting a Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Document the +geom+ module you wrote in <<CH02-ET1,Étude 2-1>>.
 
-[[CH02-ET3]]
+[[CH02-ET03]]
 Étude 2-3: Documenting a Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Document the +area/2+ function, and create an _overview.edoc_ file to complete

@@ -180,7 +180,7 @@ create the Mnesia tables for the two files. The function
 that does this will be named +setup/2+, and its arguments will be the
 names of the file containing the data.
 
-Use the phone call data from <<ET10-01,Étude 10-11>>, and
+Use the phone call data from <<ET10-01,Étude 10-1>>, and
 use this data for the customers. Put it in a file named
 +customer_data.csv+ or whatever other name you wish.
 
@@ -230,14 +230,16 @@ Here is some sample output.
 [{"213-555-0172",9,1.08}]
 -----
 
-Here's the good news about the query list comprehensions.
+As promised, here's the good news about query list comprehensions.
 In this module, you need to access the
 customer table to match the phone number to the name when collecting the
 calls for the customer. You also need to access the customer table in
 order to access the customer's rate per minute. You don't want to have
 to write the specification for the guards on the customer table twice.
 
-As +Introducing Erlang+ notes, "you can use the +qlc:q+ function to hold a
+As 
+http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang]
+notes, "you can use the +qlc:q+ function to hold a
 list comprehension and the +qlc:e+ function to process it." Specifically,
 the +qlc:q+ function returns a _query handle_ which you can evaluate
 and which you can also use in place of a list name in a query list
@@ -288,8 +290,8 @@ get_info() ->
   [People, Pets].
 ----
 
-But there's a lot of duplication. Instead, you can make a query list
-handle for the people, and use it again in the animal search. Note
+To avoid duplicating the list and guards for the person table, you can make a 
+query list handle for that query and use it again in the animal search. Note
 that you don't have to be in a transacation to create a query handle,
 but you must be in a transaction to process it.
 

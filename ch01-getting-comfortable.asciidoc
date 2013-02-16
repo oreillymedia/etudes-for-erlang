@@ -1,0 +1,22 @@
+[[GETTINGCOMFORTABLE]]
+Getting Comfortable with Erlang
+-------------------------------
+
+[[CH01-ET01]]
+Étude 1-1: Experimenting with Errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The first chapter of
+http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang]
+encourages you to play around with the interacative +erl+ system.
+In this étude, keep using +erl+, but purposely make errors.
+
+Try leaving out parentheses in arithmetic expressions. Try putting
+numbers next to each other without an operator between them.
+Try adding +"adam"+ to +12+. Make up variable names that you are sure
+Erlang wouldn't ever accept.
+
+That way, you'll get a feel for the sort of error messages
+Erlang produces and not be as baffled when you get errors that
+you aren't expecting.
+
+

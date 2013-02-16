@@ -26,7 +26,9 @@ the list is less than the current candidate.
   and the current candidate (still the "smallest number")
   as the second argument.
 
-Unlike most examples in _Introducing Erlang_, passing an empty list to this 
+Unlike most examples in 
+http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang],
+passing an empty list to this 
 function will make it crash. That's a reasonable thing to do, as an empty
 list can't really be said to have a minimum value.
 

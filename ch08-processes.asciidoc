@@ -90,7 +90,8 @@ giving the cards to each player at the start of the game. The dealer then
 can tell each player to turn over cards, make a decision as to who won, and
 then tell a particular player to take cards. This simplifies the message
 flow considerably and also fits in nicely with the OTP concepts of supervisors
-and servers, covered in Chapter 10 of _Introducing Erlang_.
+and servers, covered in Chapter 10 of
+http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang].
 
 
 In my code, the dealer had to keep track of:
