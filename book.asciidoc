@@ -2,6 +2,8 @@
 
 include::ch00-introduction.asciidoc[]
 
+include::ch01-getting-comfortable.asciidoc[]
+
 include::ch02-functions_and_modules.asciidoc[]
 
 include::ch03-tuples-and-records.asciidoc[]
