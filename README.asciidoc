@@ -1,0 +1,34 @@
+== 97 Things Every Agile Developer Should Know
+
+Welcome to _Etudes for Erlang_.  In this book, you will find descriptions of programs that you can compose (write) in Erlang.The programs will usually be short, and each one has been designed to provide practice material for a particular Erlang programming concept. These programs have not been designed to be of considerable difficulty, though they may ask you to stretch a bit beyond the immediate material and examples that you find in the book <a href="http://shop.oreilly.com/product/0636920025818.do">Introducing Erlang</a>.
+
+This book is open source, so if you'd like to contribute, make a correction, or otherwise participate in the project, check out <a href="https://github.com/oreillymedia/etudes-for-erlang">oreillymedia/etudes-for-erlang</a> on GitHub for details. If we accept your work, we'll add you to the contributors page.
+
+=== How to Contribute
+
+If you are interested in contributing to the project, here's what you need to do.
+
+==== Read the contributor guidelines.
+
+The https://github.com/oreillymedia/97-things-every-agile-developer-should-know/blob/master/contributor_guidelines.asciidoc[Contributor Guidelines] has an overview of the style, length, format, and other details we're looking for from the contributions.  The tl;dr is:
+
+* Conversational tone.  Be professional, not professorial.
+* 400 - 500 words
+* Include your name and a short biography at the end of your contribution
+* You agree to put your contribution under the link::http://creativecommons.org/licenses/by/3.0/us/[Creative Commons Attribution 3.0 license]
+
+The https://github.com/oreillymedia/97-things-every-agile-developer-should-know/blob/master/submission_tutorial.asciidoc[Submission Tutorial] provides a step by step process for making a contribution.  
+
+The quick version is:
+
+* Sign up for a GitHub account
+* Fork this repo to your new account
+* Submit your contribution
+** Work in the master branch (we know this isn't ideal, but there it is)
+** Write in http://powerman.name/doc/asciidoc[AsciiDoc] 
+** Include your name and bio
+* Submit a pull request when your contribution is as close to perfect as you can get it
+
+==== Engage with us in the discussion
+
+Once we receive your pull request, we'll evaluate it for the book.  The editor might ask you to make some modifications, so there will likely be some back and forth.  If we accept your contribution, we'll merge it into the master repository.  
