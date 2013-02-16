@@ -1,3 +1,4 @@
+[[how_to_contribute]]
 == How To Contribute 
 
 If you're considering making a contribution, here are some guidelines to keep in mind: 
