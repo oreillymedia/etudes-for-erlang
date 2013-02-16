@@ -1,5 +1,4 @@
-== Contributors Guide 
-
+== Contributor's Guide 
 
 If you're considering making a contribution to the project, here are some guidelines to keep in mind: 
 
