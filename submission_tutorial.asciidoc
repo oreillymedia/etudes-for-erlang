@@ -21,25 +21,6 @@ The following screen will appear while GitHub copies the repository to your acco
 
 image::https://s3.amazonaws.com/orm-atlas-media/tutorial_forking.png[]
 
-
-=== Click the "+" button next to the directory name to create a new file
-
-Locate the small "\+" sign next to the repository name.  (A tooltip will appear that says "Create a new file here" when you hover your mouse above it.)  Click the "\+" button:
-
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_add_a_file.png[]
-
-=== Name the file and enter your title
-
-In the new screen: 
-
-* Enter a name for the file.  You should name the file using the convention using your first and last name with an ".asciidoc" at the end.  For example, "andrew_odewahn.asciidoc".
-* Enter the title in the editing box; it should be prefaced with two "==" signs.  For example, "== Always Foo the Bar"
-* Once you've entered the filename and title, the "Commit Changes" button at the bottom of the screen will activate.  Click the button to save your file.
-
-You will see something like this:
-
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_naming_a_file.png[]
-
 === Edit your file using AsciiDoc
 
 Once you've got the file created, you can start editing it at your leisure.  Remember to:
@@ -50,6 +31,27 @@ Once you've got the file created, you can start editing it at your leisure.  Rem
 To edit the file, all you have to do is click its name in the directory listing in GitHub and then press the "Edit" button.  
 
 image::https://s3.amazonaws.com/orm-atlas-media/tutorial_edit.png[]
+
+[NOTE]
+****
+
+If you want to add an entirely new topic area, you'll need to create a new file in GitHub.  To do this, click the "+" button next to the directory name to create a new file
+
+Locate the small "\+" sign next to the repository name.  (A tooltip will appear that says "Create a new file here" when you hover your mouse above it.)  Click the "\+" button:
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_add_a_file.png[]
+
+In the new screen, you'll need to: 
+
+* Enter a name for the file.  Name the file according to the general topic area, and be sure to include the extension ".asciidoc" at the end.  For example, "foo_and_bar.asciidoc".
+* Enter the chapter title in the editing box; it should be prefaced with two "==" signs.  For example, "== Always Foo the Bar"
+* Once you've entered the filename and title, the "Commit Changes" button at the bottom of the screen will activate.  Click the button to save your file.
+
+You will see something like this:
+
+image::https://s3.amazonaws.com/orm-atlas-media/tutorial_naming_a_file.png[]
+
+****
 
 === Double check your submission and add your biography
 
