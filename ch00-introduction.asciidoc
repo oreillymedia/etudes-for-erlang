@@ -1,6 +1,7 @@
-[[INTRODUCTION]]
-Introduction: What's an étude?
-------------------------------
+[preface]
+[[PREFACE]]
+Preface: What's an étude?
+-------------------------
 An étude, according to Wikipedia, is "an instrumental musical composition, usually short and of considerable difficulty, usually designed to provide practice material for perfecting a particular musical skill."
 
 What are Études for Erlang?
@@ -12,3 +13,22 @@ Erlang programming concept. Unlike musical études, these programs have not been
 designed to be of considerable difficulty, though they may ask you to
 stretch a bit beyond the immediate material and examples that you find
 in the book http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang].
+
+How This Book was Written
+~~~~~~~~~~~~~~~~~~~~~~~~~
+While reading the early release version of Introducing Erlang,
+I began by copying the examples in the book. (This always helps me
+learn the material better.) I then began experimenting with small
+programs of my own to make sure I really understood the concepts.
+As I continued writing my own examples, I thought they might be useful
+to other people as well. I contacted Simon St. Laurent, the author
+of Introducing Erlang, and he liked the idea of having these companion
+exercises and suggested naming them études.
+At some point, the études took on a life of their own,
+and you are reading the result now.
+
+I was learning Erlang as I was creating the solutions to the
+études, following the 
+philosophy that "the first way that works is the right way."
+Therefore, don't be surprised if you see some fairly
+naïve code that an expert Erlang programmer would never write.
