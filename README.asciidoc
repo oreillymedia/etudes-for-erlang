@@ -11,11 +11,11 @@ The online version of the book is at http://chimera.labs.oreilly.com/books/12340
 
 If you're considering making a contribution, here are some guidelines to keep in mind: 
 
+Creative Commons license.::
+   All contributions made to this site are required to be made under the link::http://creativecommons.org/licenses/by-nc-nd/3.0/[Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License]. This means that by making a content contribution, you are agreeing that it is licensed to us and to others under this license. If you do not want your content to be available under this license, you should not contribute it.
+
 Submit only your own work.::
    You warrant that all work that you contribute to this site is your original work, except for material that is in the public domain or for which you have obtained permission. Feel free to draw from your own existing work (blogs, articles, talks, etc.), so long as you are happy with the Creative Commons license.
-
-Creative Commons license.::
-   All contributions made to this site are required to be made under the link::http://creativecommons.org/licenses/by/3.0/us/[Creative Commons Attribution 3.0 license]. This means that by making a content contribution, you are agreeing that it is licensed to us and to others under this license. If you do not want your content to be available under this license, you should not contribute it.
 
 Your submission may not be accepted.::
    Be aware that we may not be able to accept your contribution.
