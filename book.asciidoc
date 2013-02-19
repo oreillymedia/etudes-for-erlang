@@ -1,5 +1,3 @@
-:bookseries: basic
-
 = Études for Erlang
 
 include::README.asciidoc[]
