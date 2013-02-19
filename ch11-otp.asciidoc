@@ -1,0 +1,256 @@
+[[OTP]]
+Getting Started with OTP
+------------------------
+
+[[CH11-ET01]]
+Étude 11-1: Get the Weather
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In this étude, you will create a weather server using the +gen_server+
+OTP behavior.This server will handle requests using a four-letter weather
+station identifier and will return a brief summary of the weather.
+
+Here is some sample output:
+
+----
+1> c(weather).
+{ok,weather}
+2> weather:start_link().
+{ok,<0.42.0>}
+3> gen_server:call(weather, "KSJC").
+{ok,[{location,"San Jose International Airport, CA"},
+     {observation_time_rfc822,"Mon, 18 Feb 2013 13:53:00 -0800"},
+     {weather,"Overcast"},
+     {temperature_string,"51.0 F (10.6 C)"}]}
+4> gen_server:call(weather, "KITH").
+{ok,[{location,"Ithaca / Tompkins County, NY"},
+     {observation_time_rfc822,"Mon, 18 Feb 2013 16:56:00 -0500"},
+     {weather,"A Few Clouds"},
+     {temperature_string,"29.0 F (-1.6 C)"}]}
+5> gen_server:call(weather,"NONE").
+{error,404}
+6> gen_server:cast(weather, "").
+Most recent requests: ["KITH","KSJC"]
+----
+
+Obtaining Weather Data
+^^^^^^^^^^^^^^^^^^^^^^
+To retrieve a web page, you must first call +inets:start/0+; you will
+want to do this in your +init/1+ code. Then, simply call
++httpc:request(_url_)+, where +_url_+ is a string containing the URL
+you want. In this case, you will use the
+server provided by http://www.noaa.gov/[National Oceanic and Atmospheric Administration]. This server accepts four-letter
+weather station codes and returns an
+XML file summarizing the current weather at that station. You request
+this data with a URL in the form
+
++http://w1.weather.gov/xml/current_obs/_NNNN_.xml+
+
+where +_NNNN_+ is the station code.
+
+If the call to +httpc:request/1+ fails you will get a tuple of the form
++{error,_information_}+.
+
+If it succeeds, you will get a tuple in the form:
+
+[subs="quotes"]
+----
+{ok,{{"HTTP/1.1",_code_,"_code message_"},
+     [{"_HTTP header attribute_","_value_"},
+      {"_Another attribute_","_another value_"}],
+     "_page contents_"}}
+----
+
+where +_code_+ is the return code (200 means the page was found,
+404 means it's missing, anything else is some sort of error).
+
+So, let's say you have successfully retrieved a station's data. You will
+then get page content that contains something like this:
+
+----
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<?xml-stylesheet href="latest_ob.xsl" type="text/xsl"?>
+<current_observation version="1.0"
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:noNamespaceSchemaLocation="http://www.weather.gov/view/current_observation.xsd">
+	<credit>NOAA's National Weather Service</credit>
+	<credit_URL>http://weather.gov/</credit_URL>
+	<image>
+		<url>http://weather.gov/images/xml_logo.gif</url>
+		<title>NOAA's National Weather Service</title>
+		<link>http://weather.gov</link>
+	</image>
+	<suggested_pickup>15 minutes after the hour</suggested_pickup>
+	<suggested_pickup_period>60</suggested_pickup_period>
+	<location>San Jose International Airport, CA</location>
+	<station_id>KSJC</station_id>
+	<latitude>37.37</latitude>
+	<longitude>-121.93</longitude>
+	<observation_time>Last Updated on Feb 18 2013, 11:53 am PST</observation_time>
+  <observation_time_rfc822>Mon, 18 Feb 2013 11:53:00 -0800</observation_time_rfc822>
+	<weather>Overcast</weather>
+	<temperature_string>50.0 F (10.0 C)</temperature_string>
+	<temp_f>50.0</temp_f>
+	<temp_c>10.0</temp_c>
+	<relative_humidity>77</relative_humidity>
+	<wind_string>Calm</wind_string>
+	<wind_dir>North</wind_dir>
+	<wind_degrees>0</wind_degrees>
+	<wind_mph>0.0</wind_mph>
+	<wind_kt>0</wind_kt>
+	<pressure_string>1017.7 mb</pressure_string>
+	<pressure_mb>1017.7</pressure_mb>
+	<pressure_in>30.05</pressure_in>
+	<dewpoint_string>43.0 F (6.1 C)</dewpoint_string>
+	<dewpoint_f>43.0</dewpoint_f>
+	<dewpoint_c>6.1</dewpoint_c>
+	<visibility_mi>10.00</visibility_mi>
+ 	<icon_url_base>http://forecast.weather.gov/images/wtf/small/</icon_url_base>
+	<two_day_history_url>http://www.weather.gov/data/obhistory/KSJC.html</two_day_history_url>
+	<icon_url_name>ovc.png</icon_url_name>
+	<ob_url>http://www.weather.gov/data/METAR/KSJC.1.txt</ob_url>
+	<disclaimer_url>http://weather.gov/disclaimer.html</disclaimer_url>
+	<copyright_url>http://weather.gov/disclaimer.html</copyright_url>
+	<privacy_policy_url>http://weather.gov/notice.html</privacy_policy_url>
+</current_observation>
+----
+
+Parsing the Data
+^^^^^^^^^^^^^^^^
+
+You now have to parse that XML data. Luckily, Erlang comes with the
++xmerl_scan:string/1+ function, which will parse your XML into a rather
+imposing-looking tuple. Here is what it looks like for a very simple
+bit of XML:
+
+[source, erl]
+----
+1> XML = "<pets><cat>Misha</cat><dog>Lady</dog></pets>".
+"<pets><cat>Misha</cat><dog>Lady</dog></pets>"
+3> Result = xmerl_scan:string(XML).
+{{xmlElement,pets,pets,[],
+     {xmlNamespace,[],[]},
+     [],1,[],
+     [{xmlElement,cat,cat,[],
+                  {xmlNamespace,[],[]},
+                  [{pets,1}],
+                  1,[],
+                  [{xmlText,[{cat,1},{pets,1}],1,[],"Misha",text}],
+                  [],
+                  "/home/david/etudes/code/ch11-01",
+                  undeclared},
+      {xmlElement,dog,dog,[],
+                  {xmlNamespace,[],[]},
+                  [{pets,1}],
+                  2,[],
+                  [{xmlText,[{dog,2},{pets,1}],1,[],"Lady",text}],
+                  [],undefined,undeclared}],
+     [],
+     "/home/david/etudes/code/ch11-01",
+     undeclared},
+     []}
+----
+
+Ye cats! How you do work with that?! First, put this at the top of your
+code so that you can use +xmerl+'s record definitions:
+
+[source, erlang]
+----
+-include_lib("xmerl/include/xmerl.hrl").
+----
+
+You can see all the details of the records at 
+http://erlang.googlecode.com/svn-history/r160/trunk/lib/xmerl/include/xmerl.hrl
+
+Then, copy and paste this into your code. You could figure it out
+on your own, but that would take away from setting up the server, which is
+the whole point of this étude.
+
+[source, erlang]
+----
+%% Take raw XML data and return a set of {key, value} tuples
+
+analyze_info(WebData) ->
+  %% list of fields that you want to extract
+  ToFind = [location, observation_time_rfc822, weather, temperature_string],
+  
+  %% get just the parsed data from the XML parse result
+  Parsed = element(1, xmerl_scan:string(WebData)),
+  
+  %% This is the list of all children under <current_observation>
+  Children = Parsed#xmlElement.content,
+  
+  %% Find only XML elements and extract their names and their text content.
+  %% You need the guard so that you don't process the newlines in the
+  %% data (they are XML text descendants of the root element).
+  ElementList = [{El#xmlElement.name, extract_text(El#xmlElement.content)}
+    || El <- Children, element(1, El) == xmlElement],
+    
+  %% ElementList is now a keymap; get the data you want from it.
+  lists:map(fun(Item) -> lists:keyfind(Item, 1, ElementList) end, ToFind).
+
+
+%% Given the parsed content of an XML element, return its first node value
+%% (if it's a text node); otherwise return the empty string.
+
+extract_text(Content) ->
+  Item = hd(Content),
+  case element(1, Item) of
+    xmlText -> Item#xmlText.value;
+    _ -> ""
+  end.
+----
+
+Set up a Supervisor
+^^^^^^^^^^^^^^^^^^^
+Finally, you can easily crash the server by handing it a number instead
+of a string for the station code.  Set up a supervisor to restart the
+server when it crashes.
+
+[source, erl]
+----
+1> c(weather_sup).
+{ok,weather_sup}
+2> {ok, Pid} = weather_sup:start_link().
+{ok,<0.38.0>}
+3> unlink(Pid).
+true
+4> gen_server:call(weather, "KGAI").
+{ok,[{location,"Montgomery County Airpark, MD"},
+     {observation_time_rfc822,"Mon, 18 Feb 2013 17:55:00 -0500"},
+     {weather,"Fair"},
+     {temperature_string,"37.0 F (3.0 C)"}]}
+5> gen_server:call(weather, 1234).  
+** exception exit: {{badarg,[{erlang,'++',[1234,".xml"],[]},
+                             {weather,get_weather,2,[{file,"weather.erl"},{line,43}]},
+                             {weather,handle_call,3,[{file,"weather.erl"},{line,23}]},
+                             {gen_server,handle_msg,5,
+                                         [{file,"gen_server.erl"},{line,588}]},
+                             {proc_lib,init_p_do_apply,3,
+                                       [{file,"proc_lib.erl"},{line,227}]}]},
+                    {gen_server,call,[weather,1234]}}
+     in function  gen_server:call/2 (gen_server.erl, line 180)
+
+=INFO REPORT==== 18-Feb-2013::15:57:19 ===
+    application: inets
+    exited: stopped
+    type: temporary
+6> 
+=ERROR REPORT==== 18-Feb-2013::15:57:19 ===
+** Generic server weather terminating 
+** Last message in was 1234
+** When Server state == ["KGAI"]
+** Reason for termination == 
+** {badarg,[{erlang,'++',[1234,".xml"],[]},
+            {weather,get_weather,2,[{file,"weather.erl"},{line,43}]},
+            {weather,handle_call,3,[{file,"weather.erl"},{line,23}]},
+            {gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,588}]},
+            {proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,227}]}]}
+
+6> gen_server:call(weather, "KCMI").
+{ok,[{location,"Champaign / Urbana, University of Illinois-Willard, IL"},
+     {observation_time_rfc822,"Mon, 18 Feb 2013 16:53:00 -0600"},
+     {weather,"Overcast and Breezy"},
+     {temperature_string,"47.0 F (8.3 C)"}]}
+----
+
