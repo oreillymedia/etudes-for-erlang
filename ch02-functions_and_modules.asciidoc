@@ -13,7 +13,7 @@ write function +area/2+.
 
 Here is some sample output.
 
-[source,erl]
+[source, erlang]
 ----
 1> c(geom).
 {ok,geom}
@@ -28,7 +28,7 @@ Here is some sample output.
 .Suggested Solution
 ****
 
-[source, erl]
+[source, erlang]
 ----
 include::code/ch02-01/geom.erl[]
 ----
