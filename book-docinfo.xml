@@ -6,3 +6,8 @@
     
   </authorblurb>
 </author>
+<mediaobject role="cover">
+	<imageobject role="front-large" remap="lrg">
+		<imagedata format="PNG" fileref="images/cover.png"/>
+	</imageobject>
+</mediaobject>
