@@ -25,9 +25,8 @@ Here is some sample output.
 
 
 [role="solution"]
-.Solution
+.Suggested Solution
 ****
-Your markup should look something like this:
 
 [condition="editable"]
 [source, erl]
