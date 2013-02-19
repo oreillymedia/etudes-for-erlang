@@ -28,7 +28,6 @@ Here is some sample output.
 .Suggested Solution
 ****
 
-[condition="editable"]
 [source, erl]
 ----
 include::code/ch02-01/geom.erl[]
