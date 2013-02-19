@@ -1,4 +1,4 @@
-[[preface]]
+[preface]
 == Études for Erlang
 
 Welcome to _Études for Erlang_.  In this book, you will find descriptions of programs that you can compose (write) in Erlang.The programs will usually be short, and each one has been designed to provide practice material for a particular Erlang programming concept. These programs have not been designed to be of considerable difficulty, though they may ask you to stretch a bit beyond the immediate material and examples that you find in the book http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang].
