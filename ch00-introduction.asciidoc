@@ -35,7 +35,7 @@ naïve code that an expert Erlang programmer would never write.
 
 [[suggested_topic]]
 [role="shoutout"]
-.Have any suggested topic?
+.Have any suggested topics?
 ****
 Suggest topics you'd like to see covered here, or just go add them yourself at https://github.com/oreillymedia/etudes-for-erlang[oreillymedia/etudes-for-erlang] on GitHub.
 ****
