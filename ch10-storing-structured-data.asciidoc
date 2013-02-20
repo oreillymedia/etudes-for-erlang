@@ -143,6 +143,8 @@ ok
  {"650-555-3326",11}]
 -----
 
+<<SOLUTION10-ET01,See a suggested solution in Appendix A.>>
+
 [[CH10-ET02]]
 Étude 10-2: Using Mnesia
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -328,4 +330,6 @@ get_info_easier() ->
   ),
   [People, Pets].
 ----
+
+<<SOLUTION10-ET02,See a suggested solution in Appendix A.>>
 

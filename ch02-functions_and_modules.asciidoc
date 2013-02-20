@@ -23,17 +23,17 @@ Here is some sample output.
 84
 ----
 
-<<SOLUTION02-ET01,See a suggested solution.>>
+<<SOLUTION02-ET01,See a suggested solution in Appendix A.>>
 
 [[CH02-ET02]]
 Étude 2-2: Documenting a Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Document the +geom+ module you wrote in <<CH02-ET01,Étude 2-1>>.
-<<SOLUTION02-ET02,See a suggested solution.>>
+<<SOLUTION02-ET02,See a suggested solution in Appendix A.>>
 
 [[CH02-ET03]]
 Étude 2-3: Documenting a Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Document the +area/2+ function, and create an _overview.edoc_ file to complete
 the documentation of the application you've written.
-<<SOLUTION02-ET03,See a suggested solution.>>
+<<SOLUTION02-ET03,See a suggested solution in Appendix A.>>

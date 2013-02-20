@@ -25,6 +25,8 @@ Here is some sample output.
 {error,badarith}
 --------
 
+<<SOLUTION09-ET01,See a suggested solution in Appendix A.>>
+
 [[CH09-ET02]]
 Étude 9-2: Logging Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,3 +98,6 @@ Unknown command X
 D)eposit, W)ithdraw, B)alance, Q)uit: Q
 true
 -----------
+
+<<SOLUTION09-ET02s,See a suggested solution in Appendix A.>>
+

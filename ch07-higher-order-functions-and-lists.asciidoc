@@ -49,6 +49,8 @@ you can define the function in line.
 * Line 6 shows how to refer to a function in another module. You start
 with the word +fun+ followed by the +__module__:__function__/__arity__+.
 
+<<SOLUTION07-ET01,See a suggested solution in Appendix A.>>
+
 [[CH07-ET02]]
 Étude 7-2: List Comprehensions and Pattern Matching
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,6 +144,8 @@ with one call to +lists:foldl/3+. Hint:
 the argument for the accumulator doesn't have to be a single number. It can
 be a list or a tuple.
 
+<<SOLUTION07-ET03,See a suggested solution in Appendix A.>>
+
 [[CH07-ET04]]
 Étude 7-4: Using +lists:split/2+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -160,6 +164,8 @@ Use +lists:split/2+ and +lists:foldl/3+ to rewrite the
 <<CH06-03,Étude 6-3>>. Hint: you'll use those functions when
 calculating the total number of days up to (but not including)
 the month in question.
+
+<<SOLUTION07-ET04,See a suggested solution in Appendix A.>>
 
 [[CH07-ET05]]
 Étude 7-5: Multiple Generators in List Comprehensions
@@ -214,6 +220,8 @@ show_deck(Deck) ->
 
 ===========
 
+<<SOLUTION07-ET05,See a suggested solution in Appendix A.>>
+
 [[CH07-ET06]]
 Étude 7-6: Explaining an Algorithm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -235,3 +243,5 @@ of this étude? I want you to understand the code. The object of this
 If you aren't sure what the code does, try adding some
 +io:format+ statements to see what is happening. If you're totally
 stuck, http://en.literateprograms.org/Fisher-YatesShuffle_%28Erlang%29[see the explanation from Literate Programs site].
+
+<<SOLUTION07-ET06,See a suggested solution in Appendix A.>>

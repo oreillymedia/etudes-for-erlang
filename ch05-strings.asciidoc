@@ -88,6 +88,8 @@ program work.
   appropriate error message. Otherwise, the function calls
   +geom:area/3+ to calculate the area of the shape.
 
+<<SOLUTION05-ET01,See a suggested solution in Appendix A.>>
+
 [[CH05-ET02]]
 Étude 5-2: Using the +re+ Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -113,3 +115,6 @@ a list of characters.
 
 Yes, I know this étude seems pointless, but trust me:
 I'm going somewhere with this. Stay tuned.
+
+<<SOLUTION05-ET02,See a suggested solution in Appendix A.>>
+

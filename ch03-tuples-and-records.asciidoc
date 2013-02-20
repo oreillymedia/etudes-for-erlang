@@ -27,7 +27,7 @@ Here is some sample output.
 25.132741228718345
 ----
 
-<<SOLUTION03-ET01,See a suggested solution.>>
+<<SOLUTION03-ET01,See a suggested solution in Appendix A.>>
 
 [[CH03-ET02]]
 Étude 3-2: Guards
@@ -54,7 +54,7 @@ Here is some sample output.
 ** exception error: no function clause matching geom:area(square,-1,3) (geom.erl, line 18)
 ----
 
-<<SOLUTION03-ET02,See a suggested solution.>>
+<<SOLUTION03-ET02,See a suggested solution in Appendix A.>>
 
 [[CH03-ET03]]
 Étude 3-3: Underscores
@@ -80,7 +80,7 @@ Here is some sample output.
 0
 ----
 
-<<SOLUTION03-ET03,See a suggested solution.>>
+<<SOLUTION03-ET03,See a suggested solution in Appendix A.>>
 
 [[CH03-ET04]]
 Étude 3-4: Tuples as Parameters
@@ -104,5 +104,5 @@ Here is some sample output.
 65.97344572538566
 ----
 
-<<SOLUTION03-ET04,See a suggested solution.>>
+<<SOLUTION03-ET04,See a suggested solution in Appendix A.>>
 

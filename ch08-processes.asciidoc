@@ -152,3 +152,6 @@ four cards in two suits. If you try to play with a full deck, the game could
 go on for a very, very long time.
 
 Use plenty of calls to +io:format/2+ to see what your code is really doing.
+
+<<SOLUTION08-ET01,See a suggested solution in Appendix A.>>
+

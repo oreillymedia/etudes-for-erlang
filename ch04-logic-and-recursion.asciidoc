@@ -10,6 +10,8 @@ Change the +area/3+ function that you wrote in
 of pattern matching. Use a guard on the function definition to ensure
 that the numeric arguments are both greater than zero.
 
+<<SOLUTION04-ET01,See a suggested solution in Appendix A.>>
+
 [[CH04-ET02]]
 Étude 4-2: Recursion
 ~~~~~~~~~~~~~~~~~~~~
@@ -52,6 +54,8 @@ wonder why I'm asking you to re-invent the wheel. The reason is not to replace
 +math:pow/2+, but to experiment with recursion by writing functions that can be
 expressed quite nicely that way.
 
+<<SOLUTION04-ET02,See a suggested solution in Appendix A.>>
+
 [[CH04-ET03]]
 Étude 4-3: Non-Tail Recursive Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,6 +89,8 @@ Note that this function is _not_ tail recursive.  Here is some sample output.
 6> powers:raise(2, -3).
 0.125
 ------
+
+<<SOLUTION04-ET03,See a suggested solution in Appendix A.>>
 
 [[CH04-ET04]]
 Étude 4-4: Tail Recursion with an Accumulator
@@ -157,3 +163,6 @@ Current guess is 3.000000081210202
 Current guess is 3.000000000000002
 3.0
 ----
+
+<<SOLUTION04-ET04,See a suggested solution in Appendix A.>>
+
