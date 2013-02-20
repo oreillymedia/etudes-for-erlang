@@ -110,7 +110,10 @@ Scroll down the resulting page until you find
 
 When you write the +-spec+ for this function (you _have_ been
 writing documentation for your functions, haven't you?), the type
-you will use for the parameter is +string()+.
+you will use for the parameter is +string()+. 
+
+NOTE: You can see a complete
+list of the built-in types at http://www.erlang.org/doc/reference_manual/typespec.html
 
 Yes, I know this étude seems pointless, but trust me:
 I'm going somewhere with this. Stay tuned.
