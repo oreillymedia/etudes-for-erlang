@@ -110,8 +110,7 @@ Scroll down the resulting page until you find
 
 When you write the +-spec+ for this function (you _have_ been
 writing documentation for your functions, haven't you?), the type
-you will use for the parameter is +list()+, because a string is really
-a list of characters.
+you will use for the parameter is +string()+.
 
 Yes, I know this étude seems pointless, but trust me:
 I'm going somewhere with this. Stay tuned.
