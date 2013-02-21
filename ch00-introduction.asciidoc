@@ -33,3 +33,10 @@ I was learning Erlang as I was creating the solutions to the
 philosophy that "the first way that works is the right way."
 Therefore, don't be surprised if you see some fairly
 naïve code that an expert Erlang programmer would never write.
+
+[[suggested_topic]]
+[role="shoutout"]
+.Have any suggested topics?
+****
+Suggest topics you'd like to see covered here, or just go add them yourself at https://github.com/oreillymedia/etudes-for-erlang[oreillymedia/etudes-for-erlang] on GitHub.
+****

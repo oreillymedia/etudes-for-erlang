@@ -88,7 +88,7 @@ Here is some sample output.
 Add an +area/1+ function that takes a tuple of the form
 +{*shape*,*number*,*number*}+ as its parameter. Export it
 instead of +area/3+. The +area/1+ function will call the
-call the private +area/3+ function.
+private +area/3+ function.
 
 Here is some sample output.
 

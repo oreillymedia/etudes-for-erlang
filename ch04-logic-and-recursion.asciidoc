@@ -45,6 +45,8 @@ Here is some sample output.
 12
 ----
 
+<<SOLUTION04-ET02,See a suggested solution in Appendix A.>>
+
 The next two exercises involve writing code to raise a number to an integer
 power (like 2.5^3^ or 4^-2^) and finding the __n__th root of a number, such
 as the cube root of 1728 or the fifth root of 3.2. 
@@ -53,8 +55,6 @@ These capabilities already exist with the +math:pow/2+ function, so you may
 wonder why I'm asking you to re-invent the wheel. The reason is not to replace
 +math:pow/2+, but to experiment with recursion by writing functions that can be
 expressed quite nicely that way.
-
-<<SOLUTION04-ET02,See a suggested solution in Appendix A.>>
 
 [[CH04-ET03]]
 Étude 4-3: Non-Tail Recursive Functions
