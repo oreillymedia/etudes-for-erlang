@@ -1,6 +1,5 @@
 %% @author J D Eisenberg <jdavid.eisenberg@gmail.com>
-%% @doc Read in a database of people, their cats, and their veterinarian
-%% appointments.
+%% @doc Read in a database of phone calls and customers.
 %% @copyright 2013 J D Eisenberg
 %% @version 0.1
 

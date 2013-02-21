@@ -2,6 +2,7 @@
 [[APPENDIX]]
 Solutions to Études
 -------------------
+
 Here are the solutions that I came up with for the études in
 this book. Since I was learning Erlang as I wrote them, you
 may expect some of the code to be naïve in the extreme.
