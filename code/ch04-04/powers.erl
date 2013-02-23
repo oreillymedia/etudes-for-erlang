@@ -1,6 +1,5 @@
 %% @author J D Eisenberg <jdavid.eisenberg@gmail.com>
-%% @doc Functions for raising a number to an integer power
-%% and finding the Nth root of a number using Newton's method.
+%% @doc Functions for raising a number to an integer power.
 %% @copyright 2013 J D Eisenberg
 %% @version 0.1
 

@@ -117,12 +117,6 @@ Here is a suggested solution for
 include::code/ch04-03/powers.erl[]
 ----
 
-==== +roots.erl+
-[source, erlang]
-----
-include::code/ch04-03/roots.erl[]
-----
-
 ==== +powers_traced.erl+
 This code contains output that lets you see the progress
 of the recursion.
@@ -150,6 +144,17 @@ of the recursion.
 [source, erlang]
 ----
 include::code/ch04-04/powers_traced.erl[]
+----
+
+[[SOLUTION04-ET05]]
+=== Solution 4-5
+Here is a suggested solution for
+<<CH04-ET05,Étude 4-5>>.
+
+==== +powers.erl+
+[source, erlang]
+----
+include::code/ch04-05/powers.erl[]
 ----
 
 [[SOLUTION05-ET01]]

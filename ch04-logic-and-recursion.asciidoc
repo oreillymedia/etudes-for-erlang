@@ -117,7 +117,8 @@ The +raise/3+ function _is_ tail recursive.
 [[CH04-ET05]]
 Étude 4-5: Recursion with a Helper Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this exercise, you will write a function +nth_root/2+ which finds the
+In this exercise, you will add a function +nth_root/2+ to the
++powers+ module. This new function finds the
 __n__th root of a number, where _n_ is an integer.
 For example, +nth_root(36, 2)+ will calculate
 the square root of 36, and +nth_root(1.728, 3)+ will return the cube
@@ -133,7 +134,8 @@ will call +A+. +nth_root/3+ works as follows:
 * Calculate +F+ as +(A^N^ - X)+
 * Calculate +Fprime+ as +N * A^(N - 1)^+
 * Calculate your next approximation (call it +Next+) as +A - F / Fprime+
-* If the absolute value of +Next - A+ is
+* Calculate the change in value (call it +Change+) as the absolute value of +Next - A+
+* If the +Change+ is
 less than some limit (say, 1.0e-8), stop the recursion and return
 +Next+; that's as close to the root as you are going to get.
 * Otherwise, call the +nth_root/3+ function again with
@@ -151,7 +153,7 @@ calculate it. Here is some sample output.
 ----
 1> c(roots).         
 {ok,roots}
-2> roots:cuberoot(27).  
+2> roots:nth_root(27, 3).  
 Current guess is 13.5
 Current guess is 9.049382716049383
 Current guess is 6.142823558176272
