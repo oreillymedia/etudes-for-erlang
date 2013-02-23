@@ -24,13 +24,13 @@ Keep your title pithy and to the point.::
   The title should only be a 2 to 10 words long if possible and should summarize or capture the essence of the advice. Keep your discussion between 400 and 500 words. 
 
 Volunteers only.::
-   Contributions are made on a volunteer basis — in other words, contributors are not paid for their contributions. The contributions will be made easily available to everyone on the World Wide Web for free. However, remember that those of you whose contributions are chosen for publication will get your name attached to your work, your bio published next to it, and a free copy of the published book. Any item you contribute you can also reuse in any form you wish, such as in a blog posting.
+   Contributions are made on a volunteer basis — in other words, contributors are not paid for their contributions. The contributions will be made easily available to everyone on the Web for free. However, remember that those of you whose contributions are chosen for publication will get your name attached to your work and your bio published next to it. Any item you contribute you can also reuse in any form you wish, such as in a blog posting.
 
 Only submit a pull request when you consider your work complete.::
    Please submit your work once it is complete.  Once you make a pull request, the editor will review the submission and (possibly) suggest some changes.  Reducing work in progress makes it easier for you to see your own progress and for others to see the progress of the whole project.
 
 Check spelling, word count, and formatting.::
-   Such checking seems an obvious part of the professional attention to detail, but it is worth a reminder — sometimes it seems that it is honored more in the breach than in the observance. US spelling is used for the contributions, which should be between 400 and 500 words in length. Formatting can be checked using Show preview (but don't forget to Save page) or by looking at the saved page.
+   Such checking seems obvious part, but it is worth a reminder — sometimes it seems that it is honored more in the breach than in the observance. US spelling is used for the contributions, which should be between 400 and 500 words in length. Formatting can be checked by looking at the saved page in GitHub.  If it looks right there, it's probably right.
 
 === How to Contribute
 
