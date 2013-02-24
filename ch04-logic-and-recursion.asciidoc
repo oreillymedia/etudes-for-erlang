@@ -166,5 +166,5 @@ Current guess is 3.000000000000002
 3.0
 ----
 
-<<SOLUTION04-ET04,See a suggested solution in Appendix A.>>
+<<SOLUTION04-ET05,See a suggested solution in Appendix A.>>
 
