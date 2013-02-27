@@ -441,3 +441,25 @@ include::code/ch11-01/weather.erl[]
 include::code/ch11-01/weather_sup.erl[]
 ----
 
+[[SOLUTION11-ET02]]
+=== Solution 11-2
+Here is a suggested solution for
+<<CH11-ET02,Étude 11-2>>. Since the bulk of the code
+is identical, the only code shown here is the revised +-export+ list
+and the added functions.
+
+==== +weather.erl+
+
+[source, erlang]
+----
+-export([report/1, recent/0]). % wrapper functions
+
+%% Wrapper to hide internal details when getting a weather report
+report(Station) ->
+  gen_server:call(weather, Station).
+
+%% Wrapper to hide internal details when getting a list of recently used
+%% stations.
+recent() ->
+  gen_server:cast(weather, "").
+----

@@ -7,7 +7,8 @@ Getting Started with OTP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In this étude, you will create a weather server using the +gen_server+
 OTP behavior.This server will handle requests using a four-letter weather
-station identifier and will return a brief summary of the weather.
+station identifier and will return a brief summary of the weather. You may
+also ask the server for a list of most recently accessed weather stations.
 
 Here is some sample output:
 
@@ -256,3 +257,46 @@ true
 
 <<SOLUTION11-ET01,See a suggested solution in Appendix A.>>
 
+[[CH11-ET02]]
+Étude 11-2: Wrapper Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the previous étude, you made calls directly to +gen_server+. This is
+great for experimentation, but in a real application, you do not want
+other modules to have to know the exact format of the arguments you gave
+to +gen_server:call/2+ or +gen_server:cast/2+. Instead, you provide a
+"wrapper" function that makes the actual call. In this way, you can change
+the internal format of your server requests while the interface you present
+to other users remains unchanged.
+
+In this étude, then, you will provide two wrapper functions
++report/1+ and +recent/0+. The +report/1+ function will take a station name
+as its argument and do the appropriate +gen_server:call+; the
++recent/0+ function will do an appropriate +gen_server:cast+. Everything
+else in your code will remain unchanged. You will, of course, have to add
++report/1+ and +recent/0+ to the +-export+ list.
+
+Here's some sample output.
+
+[source, erl]
+------
+1> c(weather).
+{ok,weather}
+2> weather:start_link().
+{ok,<0.45.0>}
+3> weather:report("KSJC").
+{ok,[{location,"San Jose International Airport, CA"},
+     {observation_time_rfc822,"Tue, 26 Feb 2013 17:53:00 -0800"},
+     {weather,"Fair"},
+     {temperature_string,"56.0 F (13.3 C)"}]}
+4> weather:report("XYXY").
+{error,404}
+5> weather:report("KCMI").
+{ok,[{location,"Champaign / Urbana, University of Illinois-Willard, IL"},
+     {observation_time_rfc822,"Tue, 26 Feb 2013 19:53:00 -0600"},
+     {weather,"Light Rain Fog/Mist"},
+     {temperature_string,"34.0 F (1.1 C)"}]}
+6> weather:recent().
+Most recent requests: ["KCMI","KSJC"]
+------
+
+<<SOLUTION11-ET02,See a suggested solution in Appendix A.>>
