@@ -445,7 +445,8 @@ include::code/ch11-01/weather_sup.erl[]
 === Solution 11-2
 Here is a suggested solution for
 <<CH11-ET02,Étude 11-2>>. Since the bulk of the code
-is identical, the only code shown here is the revised +-export+ list
+is identical to the code in the previous étude,
+the only code shown here is the revised +-export+ list
 and the added functions.
 
 ==== +weather.erl+
@@ -456,10 +457,58 @@ and the added functions.
 
 %% Wrapper to hide internal details when getting a weather report
 report(Station) ->
-  gen_server:call(weather, Station).
+  gen_server:call(?SERVER, Station).
 
 %% Wrapper to hide internal details when getting a list of recently used
 %% stations.
 recent() ->
-  gen_server:cast(weather, "").
+  gen_server:cast(?SERVER, "").
 ----
+
+[[SOLUTION11-ET03]]
+=== Solution 11-3
+Here is a suggested solution for
+<<CH11-ET03,Étude 11-3>>. Since the bulk of the code
+is identical to the previous étude,
+the only code shown here is the added and revised code.
+
+[source, erlang]
+----
+%% @doc Connect to a named server
+connect(ServerName) ->
+  Result = net_adm:ping(ServerName),
+  case Result of
+    pong -> io:format("Connected to server.~n");
+    pang -> io:format("Cannot connect to ~p.~n", [ServerName])
+  end.
+
+%% Wrapper to hide internal details when getting a weather report
+report(Station) ->
+  gen_server:call({global, weather}, Station).
+
+%% Wrapper to hide internal details when getting a list of recently used
+%% stations.
+recent() ->
+  gen_server:call({global,weather}, recent).
+
+%%% convenience method for startup
+start_link() ->
+  gen_server:start_link({global, ?SERVER}, ?MODULE, [], []).
+
+%%% gen_server callbacks
+init([]) ->
+  inets:start(),
+  {ok, []}.
+
+handle_call(recent, _From, State) ->
+  {reply, State, State};
+handle_call(Request, _From, State) ->
+  {Reply, NewState} = get_weather(Request, State),
+  {reply, Reply, NewState}.
+
+handle_cast(_Message, State) ->
+  io:format("Most recent requests: ~p\n", [State]),
+  {noreply, State}.
+----
+
+
