@@ -324,7 +324,6 @@ Most recent requests: ["KCMI","KSJC"]
 <<SOLUTION11-ET02,See a suggested solution in Appendix A.>>
 
 [[CH11-ET03]]
-=======
 Étude 11-3: Independent Server and Client
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In the previous études, the client and server have been running in
@@ -336,7 +335,7 @@ the +-name+ option when starting +erl+. It looks like this:
 
 [source, erl]
 ----
-marco@localhost $ erl -name serverNode
+michele@localhost $ erl -name serverNode
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -348,7 +347,7 @@ the +-sname+ option:
 
 [source, erl]
 ----
-marco@localhost $ erl -sname serverNode
+michele@localhost $ erl -sname serverNode
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -371,7 +370,7 @@ cookie:
 
 [source, erl]
 ----
-marco@localhost $ erl -sname serverNode -setcookie chocolateChip
+michele@localhost $ erl -sname serverNode -setcookie chocolateChip
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -384,7 +383,7 @@ a different user name to show that this works too.
 
 [source, erl]
 ----
-jasper@localhost $ erl -sname clientNode -setcookie oatmealRaisin
+steve@localhost $ erl -sname clientNode -setcookie oatmealRaisin
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -405,7 +404,7 @@ all will be well.
 
 [source, erl]
 ----
-jasper@localhost erltest $ erl -sname clientNode -setcookie chocolateChip
+steve@localhost erltest $ erl -sname clientNode -setcookie chocolateChip
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -429,7 +428,7 @@ Here is what it looks like when one user starts the server in a shell.
 
 [source, erl]
 ----
-marco@localhost $ erl -sname serverNode -setcookie meteorology
+michele@localhost $ erl -sname serverNode -setcookie meteorology
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -441,7 +440,7 @@ And here's another user in a different shell, calling upon the server.
 
 [source, erl]
 ----
-jasper@localhost $ erl -sname clientNode -setcookie meteorology
+steve@localhost $ erl -sname clientNode -setcookie meteorology
 Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
 Eshell V5.9.2  (abort with ^G)
@@ -480,7 +479,7 @@ easy to find out: I stopped the server.
 (serverNode@localhost)2> 
 User switch command
  --> q
-marco@localhost $ 
+michele@localhost $ 
 ----
 
 Then I had the client try to get a weather report.
