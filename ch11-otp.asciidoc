@@ -324,63 +324,177 @@ Most recent requests: ["KCMI","KSJC"]
 <<SOLUTION11-ET02,See a suggested solution in Appendix A.>>
 
 [[CH11-ET03]]
-Étude 11-3: A Simple Multi-User Chat
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The purpose of this étude is to use a different OTP behavior to
-implement a multi-user chat. I spent a fair amount of time trying to
-shoehorn a chat into the mold of the +gen_server+ behavior with
-multiple clients. That looks a bit like <<FIG1102>>.
+=======
+Étude 11-3: Independent Server and Client
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the previous études, the client and server have been running in
+the same shell. In this étude, you will make the server available to
+clients running in other shells.
 
-[[FIG1102]]
-.Multiple clients with +gen_server+ 
-image::images/eter_1102.png[float="true"]
+To make a node available to other nodes, you need to name the node by using
+the +-name+ option when starting +erl+. It looks like this:
 
-This model is great if you have many clients all demanding weather
-reports, as in the previous études. None of the clients really needs
-to talk to the others; they grab information from the server and off
-they go to other things.
+[source, erl]
+----
+marco@localhost $ erl -name serverNode
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
-I _could_ have used a client/server model, but I the clients would
-have to repeatedly ask "Do I have any messages yet?", and the internal
-state of the server got more and more complicated the more I thought
-about it.
+Eshell V5.9.2  (abort with ^G)
+(serverNode@localhost.gateway.2wire.net)1> 
+----
 
-Luckily, OTP has many different behaviors built into it, and the one
-that seemed best was the +gen_event+ behavior. <<FIG1103>> shows how it
-works.
+This is a _long name_. You can also set up a node with a short name by using
+the +-sname+ option:
 
-[[FIG1103]]
-.Processing flow in +gen_event+ 
-image::images/eter_1103.png[float="true"]
+[source, erl]
+----
+marco@localhost $ erl -sname serverNode
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
-In addition to being able to do calls just as you did in +gen_server+,
-you can add event handlers to a +gen_event+ module. When a client calls
-+gen_event:notify/2+, it sends the event manager some data in an
-+Event+. The event manager then sends the +Event+ and the manager's current
-state to all the +Handler+ modules that it knows about.
+Eshell V5.9.2  (abort with ^G)
+(serverNode@localhost)1> 
+----
 
-In the http://www.erlang.org/doc/design_principles/events.html[Erlang
-documentation for the +gen_event+ behavior], a typical use of this
-behavior would be to have two handlers added to the event manager.
-One would log an error to a terminal, and the other would log an error
-to a file. Thus, the client would notify the event manager that some
-error had occurred, and the manager would let the handlers take care
-of the rest.
+WARNING: If you set up a node in this way, _any_ other node can connect
+to it and do any shell commands at all. In order to prevent this,
+you may use the +-setcookie _Cookie_+ when starting +erl+. Then,
+only nodes that have the same _Cookie_ (which is an atom) can
+connect to your node.
 
-Now, how does this match up with the chat room? My idea was to
-make each person in the room a "handler," and ignore the client altogether.
-This means that the handler gets the person's input and notifies the
-event manager, which pushes the input to all the other handlers (and
-to the originator, who should ignore it!) The result looks like
-<<FIG1104>>.
+To connect to a node, use the +net_adm:ping/1+ function, and give it
+the name of the server you want to connect to as its argument. If you
+connect succesfully, the function will return the atom +pong+; otherwise,
+it will return +pang+.
 
-WARNING: This is almost certainly not the way the
-creators of OTP intended when they developed +gen_event+. If a student
-of mine were to turn in this solution, I would take off 20% of
-the points for "abuse of OTP."
+Here is an example. First, start a shell with a (very bad) secret
+cookie:
 
-[[FIG1104]]
-.Using +gen_event+ to create a chat room
-image::images/eter_1104.png[float="true"]
+[source, erl]
+----
+marco@localhost $ erl -sname serverNode -setcookie chocolateChip
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
 
+Eshell V5.9.2  (abort with ^G)
+(serverNode@localhost)1> 
+----
+
+Now, open another terminal window, start a shell with a different
+cookie, and try to connect to the server node. I have purposely used
+a different user name to show that this works too.
+
+[source, erl]
+----
+jasper@localhost $ erl -sname clientNode -setcookie oatmealRaisin
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.9.2  (abort with ^G)
+(clientNode@localhost)1> net_adm:ping(serverNode@localhost).
+pang
+----
+
+The server node will detect this attempt and let you know about it:
+
+[source, erl]
+----
+=ERROR REPORT==== 28-Feb-2013::22:41:38 ===
+** Connection attempt from disallowed node clientNode@localhost ** 
+----
+
+Quit the client shell, and restart it with a matching cookie, and
+all will be well.
+
+[source, erl]
+----
+jasper@localhost erltest $ erl -sname clientNode -setcookie chocolateChip
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.9.2  (abort with ^G)
+(clientNode@localhost)1> net_adm:ping(serverNode@localhost).
+pong
+----
+
+To make your weather report server available to other nodes, you
+need to do these things:
+
+* In the +start_link/0+ convenience method, set the first argument to
++gen_server:start_link/4+ to +{global, ?SERVER}+ instead of
++{local, ?SERVER}+
+* In calls to +gen_server:call/2+ and +gen_server:cast/2+, replace the
+module name +weather+ with +{global, weather}+
+* Add a +connect/1+ function that takes the server node name as its
+argument. This function will use +net_adm:ping/1+ to attempt to contact
+the server. It provides appropriate feedback when it succeeds or fails.
+
+Here is what it looks like when one user starts the server in a shell.
+
+[source, erl]
+----
+marco@localhost $ erl -sname serverNode -setcookie meteorology
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.9.2  (abort with ^G)
+(serverNode@localhost)1> weather:start_link().
+{ok,<0.39.0>}
+----
+
+And here's another user in a different shell, calling upon the server.
+
+[source, erl]
+----
+jasper@localhost $ erl -sname clientNode -setcookie meteorology
+Erlang R15B02 (erts-5.9.2) [source] [smp:2:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.9.2  (abort with ^G)
+(clientNode@localhost)1> weather:connect(serverNode@localhost).
+Connected to server.
+ok
+(clientNode@localhost)2> weather:report("KSJC").
+{ok,[{location,"San Jose International Airport, CA"},
+     {observation_time_rfc822,"Thu, 28 Feb 2013 21:53:00 -0800"},
+     {weather,"Fair"},
+     {temperature_string,"52.0 F (11.1 C)"}]}
+(clientNode@localhost)3> weather:report("KITH").
+{ok,[{location,"Ithaca / Tompkins County, NY"},
+     {observation_time_rfc822,"Fri, 01 Mar 2013 00:56:00 -0500"},
+     {weather,"Light Snow"},
+     {temperature_string,"31.0 F (-0.5 C)"}]}
+(clientNode@localhost)4> weather:recent().
+ok
+----
+
+Whoa! What happened to the output from that last call?
+The problem is that the +weather:recent/0+ call does
+an +io:format/3+ call; that output will go to the server shell, since the
+server is running that code, not the client. Bonus points if you fix this
+problem by changing +weather:recent/0+ from using
++gen_server:cast/2+ to use +gen_server:call/2+ instead to return
+the recently reported weather stations as its reply.
+
+There's one more question that went through my mind after I implemented
+my solution: how did I know that the client was calling the +weather+ code
+running on the server and not the +weather+ code in its own shell? It was
+easy to find out: I stopped the server.
+
+[source, erl]
+----
+(serverNode@localhost)2> 
+User switch command
+ --> q
+marco@localhost $ 
+----
+
+Then I had the client try to get a weather report.
+
+[source, erl]
+----
+(clientNode@localhost)5> weather:report("KSJC").
+** exception exit: {noproc,{gen_server,call,[{global,weather},"KSJC"]}}
+     in function  gen_server:call/2 (gen_server.erl, line 180)
+----
+
+The fact that it failed told me that yes, indeed, the client was getting its
+information from the server.
+
+
+<<SOLUTION11-ET03,See a suggested solution in Appendix A.>>
 

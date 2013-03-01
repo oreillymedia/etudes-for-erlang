@@ -8,29 +8,40 @@
          handle_info/2,
          terminate/2,
          code_change/3]). % gen_server callbacks
--export([report/1,
+-export([connect/1,
+         report/1,
          recent/0]). % wrapper functions
 
 -define(SERVER, ?MODULE). % macro that just defines this module as server
 
+%% @doc Connect to a named server
+connect(ServerName) ->
+  Result = net_adm:ping(ServerName),
+  case Result of
+    pong -> io:format("Connected to server.~n");
+    pang -> io:format("Cannot connect to ~p.~n", [ServerName])
+  end.
+
 %% Wrapper to hide internal details when getting a weather report
 report(Station) ->
-  gen_server:call(?SERVER, Station).
+  gen_server:call({global, ?SERVER}, Station).
 
 %% Wrapper to hide internal details when getting a list of recently used
 %% stations.
 recent() ->
-  gen_server:cast(?SERVER, "").
+  gen_server:call({global, ?SERVER}, recent).
 
 %%% convenience method for startup
 start_link() ->
-        gen_server:start_link({local, ?SERVER}, ?MODULE, [], []).
+  gen_server:start_link({global, ?SERVER}, ?MODULE, [], []).
 
 %%% gen_server callbacks
 init([]) ->
   inets:start(),
   {ok, []}.
 
+handle_call(recent, _From, State) ->
+  {reply, State, State};
 handle_call(Request, _From, State) ->
   {Reply, NewState} = get_weather(Request, State),
   {reply, Reply, NewState}.

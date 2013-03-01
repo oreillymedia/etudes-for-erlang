@@ -1,0 +1,60 @@
+[[CH11-ET03]]
+Étude 11-3: A Simple Multi-User Chat
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The purpose of this étude is to use a different OTP behavior to
+implement a multi-user chat. I spent a fair amount of time trying to
+shoehorn a chat into the mold of the +gen_server+ behavior with
+multiple clients. That looks a bit like <<FIG1102>>.
+
+[[FIG1102]]
+.Multiple clients with +gen_server+ 
+image::images/eter_1102.png[float="true"]
+
+This model is great if you have many clients all demanding weather
+reports, as in the previous études. None of the clients really needs
+to talk to the others; they grab information from the server and off
+they go to other things.
+
+I _could_ have used a client/server model, but I the clients would
+have to repeatedly ask "Do I have any messages yet?", and the internal
+state of the server got more and more complicated the more I thought
+about it.
+
+Luckily, OTP has many different behaviors built into it, and the one
+that seemed best was the +gen_event+ behavior. <<FIG1103>> shows how it
+works.
+
+[[FIG1103]]
+.Processing flow in +gen_event+ 
+image::images/eter_1103.png[float="true"]
+
+In addition to being able to do calls just as you did in +gen_server+,
+you can add event handlers to a +gen_event+ module. When a client calls
++gen_event:notify/2+, it sends the event manager some data in an
++Event+. The event manager then sends the +Event+ and the manager's current
+state to all the +Handler+ modules that it knows about.
+
+In the http://www.erlang.org/doc/design_principles/events.html[Erlang
+documentation for the +gen_event+ behavior], a typical use of this
+behavior would be to have two handlers added to the event manager.
+One would log an error to a terminal, and the other would log an error
+to a file. Thus, the client would notify the event manager that some
+error had occurred, and the manager would let the handlers take care
+of the rest.
+
+Now, how does this match up with the chat room? My idea was to
+make each person in the room a "handler," and ignore the client altogether.
+This means that the handler gets the person's input and notifies the
+event manager, which pushes the input to all the other handlers (and
+to the originator, who should ignore it!) The result looks like
+<<FIG1104>>.
+
+WARNING: This is almost certainly not the way the
+creators of OTP intended when they developed +gen_event+. If a student
+of mine were to turn in this solution, I would take off 20% of
+the points for "abuse of OTP."
+
+[[FIG1104]]
+.Using +gen_event+ to create a chat room
+image::images/eter_1104.png[float="true"]
+
