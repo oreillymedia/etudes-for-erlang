@@ -494,6 +494,223 @@ Then I had the client try to get a weather report.
 The fact that it failed told me that yes, indeed, the client was getting its
 information from the server.
 
-
 <<SOLUTION11-ET03,See a suggested solution in Appendix A.>>
+
+[[CH11-ET04]]
+Étude 11-4: Chat Room
+~~~~~~~~~~~~~~~~~~~~~
+In the previous études, the client simply made a call to the server, and
+didn't do any processing of its own. In this étude, you will create a
+"chat room" with a chat server and multiple clients, much as you see in
+<<FIG1102>>.
+
+[[FIG1102]]
+.Server with multiple clients
+image:images/eter_1102.png[float="true"]
+
+The interesting part of this program is that the client will _also_ be
+a +gen_server+, as shown in <<FIG1103>>.
+
+[[FIG1103]]
+.Client as a +gen_server+
+image:images/eter_1103.png[float="true"]
+
+Up until now, you have been using a module name as the first argument to
++gen_server:call/2+, and in the previous étude, you used
++net_adm:ping/1+ to connect to a server.
+
+In this étude, you won't need +net_adm:ping/1+. Instead,
+you will use a tuple of the form
++{Module, Node}+ to directly connect to the node you want. So, for
+example, if you want to make a call to a module named +chatroom+ on
+a node named +lobby@localhost+, you would do something like this:
+
++gen_server:call({chatroom, lobby@localhost}, Request)+
+
+This means
+you won't need to connect with +net_adm:ping/1+. 
+You'll have two modules, both of which use the +gen_server+ behavior.
+
+The +chatroom+ Module
+^^^^^^^^^^^^^^^^^^^^^
+The first module, +chatroom+, will keep as its state a list of tuples, one
+tuple for each person in the chat. Each tuple has the format
++{{UserName, UserServer}, Pid}+. The Pid is the one that +gen_server:call+
+receives in the +From+ parameter; it's guaranteed to be unique for each
+person in chat.
+
+The +handle_call/3+ function will accept the following requests.
+
++{login, UserName, ServerName}+::
+Adds the user name, server name, and Pid (which is in the +From+ parameter)
+to the server's state. Don't allow a duplicate user name from the same server.
+
++logout+::
+Removes the user from the state list.
+
++{say, Text}+::
+Sends the given Text to all the other users in the chat room. Use
++gen_server:cast/2+ to send the message.
+
++users+::
+Returns the list of names and servers for all people currently in the
+chat room.
+
++{who, Person, ServerName}+::
+Return the profile of the given person/server. (This is "extra credit";
+see the following details about the +person+ module). It works by
+calling the +person+ module at +ServerName+ and giving it a
++get_profile+ request.
+
+The +person+ Module
+^^^^^^^^^^^^^^^^^^^
+The other module, +person+, has a +start_link/1+ function; the argument
+is the node name of the chat room server. This will be passed on to the
++init/1+ function. This is stored in the server's state. I did this because
+many other calls need to know the chat room server's name, and keeping it in the
+person's state seemed a reasonable choice.
+
+For extra credit, the state will also include the person's profile, which
+is a list of +{Key, Value}+ tuples.
+
+The +handle_call/3+ takes care of these requests:
+
++get_chat_node+::
+Returns the chat node name that's stored in the server's state. (Almost all of
+the wrapper functions to be described in the following section will need
+the chat node name.)
+
++get_profile+::
+Returns the profile that's stored in the server's state (extra credit)
+
++{profile, Key, Value}+::
+If the profile already contains the key, replace it with the given value.
+Otherwise, add the key and value to the profile. Hint: use 
++lists:keymember/3+ and +lists:keyreplace/4+. (extra credit)
+
+Because the chat room server uses +gen_server:cast/2+ to send messages
+to the people in the room, your +handle_cast/3+ function will receive messages sent from other users in this form:
+
++{message, {FromUser, FromServer}, Text}+
+
+Wrapper Functions for the +person+ module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++get_chat_node()+::
+A convenience function to get the name of the chat host node by doing
++gen_server:call(person, get_chat_node)+
+
++login(UserName)+::
+Calls the chat room server with a {login, UserName} request. If the
+user name is an atom, use +atom_to_list/1+ to convert it to a string.
+
++logout()+::
+Calls the chat room server with a +logout+ request. As you saw in the
+description of +chatroom+, the server uses the process ID to figure out
+who should be logged out.
+
++say(Text)+::
+Calls the chat server with a +{say, Text}+ request.
+
++users()+::
+Calls the chat server with a +users+ request.
+
++who(UserName, UserNode)+::
+Calls the chat server with a +{who, UserName, UserNode}+ request to
+see the profile of the given person. (extra credit)
+
++profile(Key, Value)+::
+A convenience method that calls the +person+ module with a
++{profile, Key, Value}+ request. (extra credit)
+
+Putting it All Together
+^^^^^^^^^^^^^^^^^^^^^^^
+Here is what the chat room server looks like. The lines beginning with
++Recipient list:+ are debug output. I have gotten rid of the startup lines
+from the +erl+ command.
+
+[source, erl]
+-------
+erl -sname lobby
+
+(lobby@localhost)1> chatroom:start_link().
+{ok,<0.39.0>}
+Recipient list: [{"Steve",sales@localhost},{"Michele",marketing@localhost}] 
+Recipient list: [{"David",engineering@localhost},
+                 {"Michele",marketing@localhost}]
+Recipient list: [{"David",engineering@localhost},{"Steve",sales@localhost}] 
+Recipient list: [{"David",engineering@localhost},
+                 {"Michele",marketing@localhost}]
+-----
+
+And here are three other servers talking to one another and setting
+profile information.
+
+[source, erl]
+-------    
+erl -sname sales
+
+(sales@localhost)1> person:start_link(lobby@localhost).
+Chat node is: lobby@localhost
+{ok,<0.39.0>}
+(sales@localhost)2> person:login("Steve").
+{ok,"Logged in."}
+(sales@localhost)3> person:profile(city, "Chicago").
+{ok,[{city,"Chicago"}]}
+David (engineering@localhost) says: "Hi, everyone."
+(sales@localhost)4> person:say("How's things in Toronto, David?").
+ok
+Michele (marketing@localhost) says: "New product launch is next week."
+(sales@localhost)5> person:say("oops, gotta run.").
+ok
+(sales@localhost)6> person:logout().
+ok
+------
+
+[source, erl]
+-------
+erl -sname engineering
+
+(engineering@localhost)1> person:start_link(lobby@localhost).
+Chat node is: lobby@localhost
+{ok,<0.39.0>}
+(engineering@localhost)2> person:login("David").
+{ok,"Logged in."}
+(engineering@localhost)3> person:profile(city, "Toronto").
+{ok,[{city,"Toronto"}]}
+(engineering@localhost)4> person:profile(department, "New Products").
+{ok,[{department,"New Products"},{city,"Toronto"}]}
+(engineering@localhost)5> person:say("Hi, everyone.").  
+ok
+Steve (sales@localhost) says: "How's things in Toronto, David?"
+Michele (marketing@localhost) says: "New product launch is next week."
+(engineering@localhost)6> person:users().
+[{"David",engineering@localhost},
+ {"Steve",sales@localhost},
+ {"Michele",marketing@localhost}]
+Steve (sales@localhost) says: "oops, gotta run."
+------
+
+[source, erl]
+------
+erl -sname marketing
+
+(marketing@localhost)1> person:start_link(lobby@localhost).
+Chat node is: lobby@localhost
+{ok,<0.39.0>}
+(marketing@localhost)2> person:login("Michele").
+{ok,"Logged in."}
+(marketing@localhost)3> person:profile(city, "San Jose").
+{ok,[{city,"San Jose"}]}
+David (engineering@localhost) says: "Hi, everyone."
+Steve (sales@localhost) says: "How's things in Toronto, David?"
+(marketing@localhost)4> person:say("New product launch is next week.").
+ok
+Steve (sales@localhost) says: "oops, gotta run."
+(marketing@localhost)5> person:users().
+[{"David",engineering@localhost},
+ {"Michele",marketing@localhost}]
+----
+
+<<SOLUTION11-ET04,See a suggested solution in Appendix A.>>
 

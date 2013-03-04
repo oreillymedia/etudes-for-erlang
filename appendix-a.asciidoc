@@ -511,4 +511,20 @@ handle_cast(_Message, State) ->
   {noreply, State}.
 ----
 
+[[SOLUTION11-ET04]]
+=== Solution 11-4
+Here is a suggested solution for
+<<CH11-ET04,Étude 11-4>>.
+
+==== +chatroom.erl+
+[source, erlang]
+----
+include::code/ch11-04/chatroom.erl[]
+----
+
+==== +person.erl+
+[source, erlang]
+----
+include::code/ch11-04/person.erl[]
+----
 
