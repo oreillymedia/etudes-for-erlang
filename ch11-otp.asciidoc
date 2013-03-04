@@ -8,7 +8,7 @@ I drew the diagram shown in <<FIG1101>>.
 .Processing a call in +gen_server+ 
 image::images/eter_1101.png[float="true"]
 
-The client does a +gen_server::call(Server, Request)+. The server will
+The client does a +gen_server:call(Server, Request)+. The server will
 then call the +handle_call/3+ function that you have provided in the
 +Module+ that you told +gen_server+ to use. +gen_server+ will send your
 module the client's +Request+, an identifier telling who the request is
@@ -529,7 +529,11 @@ a node named +lobby@localhost+, you would do something like this:
 
 This means
 you won't need to connect with +net_adm:ping/1+. 
-You'll have two modules, both of which use the +gen_server+ behavior.
+
+Here is my design for the solution. You, of course, may come up
+with an entirely different and better design.
+
+My solution has two modules, both of which use the +gen_server+ behavior.
 
 The +chatroom+ Module
 ^^^^^^^^^^^^^^^^^^^^^
