@@ -38,7 +38,7 @@ naïve code that an expert Erlang programmer would never write.
 
 Many thanks to Simon St. Laurent, who wrote _Introducing Erlang_. His book
 not only got me to begin to understand functional programming, but also made
-me realize that it was a lot of fun. Simon also sensed that the exercises
+me realize that it was a lot of fun. Simon also felt that the exercises
 I was writing for myself could be useful to others, and he encouraged me
 to continue developing them.
 
