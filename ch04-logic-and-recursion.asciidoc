@@ -2,6 +2,8 @@
 Logic and Recursion
 -------------------
 
+NOTE: You can learn more about working with logical flow and recursion in Chapter 3 of _Erlang Programming_, Chapter 3 of _Programming Erlang_, Sections 2.6 and 2.15 of _Erlang and OTP in Action_, and Chapters 3 and 5 of _Learn You Some Erlang For Great Good!_.
+
 [[CH04-ET01]]
 Étude 4-1: Using +case+
 ~~~~~~~~~~~~~~~~~~~~~~~

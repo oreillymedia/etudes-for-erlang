@@ -2,6 +2,8 @@
 Getting Comfortable with Erlang
 -------------------------------
 
+NOTE: You can learn more about working with +erl+ in Chapter 2 of _Erlang Programming_, Chapters 2 and 6 of _Programming Erlang_, Section 2.1 of _Erlang and OTP in Action_, and Chapter 1 of _Learn You Some Erlang For Great Good!_.
+
 [[CH01-ET01]]
 Étude 1-1: Experimenting with Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

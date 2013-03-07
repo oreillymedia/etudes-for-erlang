@@ -2,6 +2,8 @@
 Atoms, Tuples, and Pattern Matching
 -----------------------------------
 
+NOTE: You can learn more about working with atoms, tuples, and pattern matching in Chapter 2 of _Erlang Programming_, Chapter 2 of _Programming Erlang_, Sections 2.2 and 2.4 of _Erlang and OTP in Action_, and Chapters 1 and 3 of _Learn You Some Erlang For Great Good!_. 
+
 [[CH03-ET01]]
 Étude 3-1: Pattern Matching
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

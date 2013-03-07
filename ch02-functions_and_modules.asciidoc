@@ -2,6 +2,8 @@
 Functions and Modules
 ---------------------
 
+NOTE: You can learn more about working with functions and modules in Chapters 2, 3, and 9 of _Erlang Programming_, Chapter 3 of _Programming Erlang_, Sections 2.3, 2.5, and 2.7 of _Erlang and OTP in Action_, and Chapters 2 and 3 of _Learn You Some Erlang For Great Good!_.  There's more on documentation in Chapter 18 of _Erlang Programming_ and types in Chapter 30 of _Learn You Some Erlang For Great Good!_.
+
 [[CH02-ET01]]
 Étude 2-1: Writing a Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

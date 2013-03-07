@@ -2,6 +2,8 @@
 Strings
 -------
 
+NOTE: You can learn more about working with strings in Chapter 2 of _Erlang Programming_, Sections 2.11 and 5.4 of _Programming Erlang_, Section 2.2.6 of _Erlang and OTP in Action_, and Chapter 1 of _Learn You Some Erlang For Great Good!_.
+
 [[CH05-ET01]]
 Étude 5-1: Validating Input
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

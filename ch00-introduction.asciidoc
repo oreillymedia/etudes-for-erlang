@@ -17,7 +17,7 @@ in the book http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang]
 
 How This Book was Written
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-While reading the early release version of Introducing Erlang,
+While reading the early release version of _Introducing Erlang_,
 I began by copying the examples in the book. (This always helps me
 learn the material better.) I then began experimenting with small
 programs of my own to make sure I really understood the concepts.
@@ -33,6 +33,11 @@ I was learning Erlang as I was creating the solutions to the
 philosophy that "the first way that works is the right way."
 Therefore, don't be surprised if you see some fairly
 naïve code that an expert Erlang programmer would never write.
+
+Working with Other Books
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although this was based on _Introducing Erlang_, you can use it with other Erlang books. A note at the beginning of each chapter will point you to relevant sections in other books.
 
 === Acknowledgments
 
