@@ -39,13 +39,13 @@ Working with Other Books
 
 Although this was based on _Introducing Erlang_, you can use it with other Erlang books. A note at the beginning of each chapter will point you to relevant sections in other books. The books listed through are:
 
-* http://shop.oreilly.com/product/9780596518189.do[Erlang Programming], by Francesco Cesarini, and Simon Thompson (O'Reilly Media, 2009)
+* http://shop.oreilly.com/product/9780596518189.do[Erlang Programming], by Francesco Cesarini, and Simon Thompson (O'Reilly Media, 2009).
 
-* http://pragprog.com/book/jaerlang/programming-erlang[Programming Erlang], by Joe Armstrong (Pragmatic Programmers, 2007)
+* http://pragprog.com/book/jaerlang/programming-erlang[Programming Erlang], by Joe Armstrong (Pragmatic Programmers, 2007).
 
-* http://www.manning.com/logan/[Erlang and OTP in Action] by Martin Logan, Eric Merritt, and Richard Carlsson (Manning, 2010)
+* http://www.manning.com/logan/[Erlang and OTP in Action] by Martin Logan, Eric Merritt, and Richard Carlsson (Manning, 2010).
 
-* http://nostarch.com/erlang[Learn You Some Erlang for Great Good!]
+* http://nostarch.com/erlang[Learn You Some Erlang for Great Good!] by Fred Hebert (No Starch Press, 2013) - also available at http://learnyousomeerlang.com/.
 
 
 === Acknowledgments
