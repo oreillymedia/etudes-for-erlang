@@ -40,7 +40,7 @@ If you're new to git and GitHub and just want to keep things as simple as possib
 
 To create and edit a page or to comment on an existing page, you will need to create an account on GitHub. If you don't have one already, then go to the https://github.com/signup/free[GitHub Signup page]. It's free.
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_github_signup.png[]
+image::images/tutorial_github_signup.png[]
 
 GitHub has excellent tools for collaborating and workflow management, and will be the primary way we communicate with you over the course of the project.
 
@@ -48,11 +48,11 @@ GitHub has excellent tools for collaborating and workflow management, and will b
 
 Once you've got an account, fork (GitHub lingo for copying) the main project to your account.  To do this, go to the  https://github.com/oreillymedia/etudes-for-erlang[Etudes for Erlang] repository on GitHub and click the "Fork" button at the upper right hand side of the screen.
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_click_fork.png[]
+image::images/tutorial_click_fork.png[]
 
 The following screen will appear while GitHub copies the repository to your account:
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_forking.png[]
+image::images/tutorial_forking.png[]
 
 ==== Edit your file using AsciiDoc
 
@@ -63,7 +63,7 @@ Once you've got the file created, you can start editing it at your leisure.  Rem
 
 To edit the file, all you have to do is click its name in the directory listing in GitHub and then press the "Edit" button.  
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_edit.png[]
+image::images/tutorial_edit.png[]
 
 [NOTE]
 ****
@@ -72,7 +72,7 @@ If you want to add an entirely new topic area, you'll need to create a new file 
 
 Locate the small "\+" sign next to the repository name.  (A tooltip will appear that says "Create a new file here" when you hover your mouse above it.)  Click the "\+" button:
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_add_a_file.png[]
+image::images/tutorial_add_a_file.png[]
 
 In the new screen, you'll need to: 
 
@@ -82,7 +82,7 @@ In the new screen, you'll need to:
 
 You will see something like this:
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_naming_a_file.png[]
+image::images/tutorial_naming_a_file.png[]
 
 ****
 
@@ -113,14 +113,14 @@ Biography::
 
 Once you've completed and double checked your submission, you're ready to submit it back to O'Reilly.  This is done by creating a "pull request" that will trigger the review process.  
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_submit_pull_request.png[]
+image::images/tutorial_submit_pull_request.png[]
 
 When you submit the pull request, you'll also be able to submit some additional information that will help us track your work:
 
 * A title.  Please enter your name and the title of the contribution.  For example, "Andrew Odewahn: Always Foo the Bar"
 * A comment.  Tell us a little bit about your contribution, as well as anything else you think we should know.
 
-image::https://s3.amazonaws.com/orm-atlas-media/tutorial_pull_request_submission_form.png[]
+image::images/tutorial_pull_request_submission_form.png[]
 
 ==== Engage in back-and-forth
 
