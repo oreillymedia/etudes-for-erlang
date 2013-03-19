@@ -43,7 +43,13 @@
         the publisher and authors assume no responsibility for errors or omissions, 
         or for damages resulting from the use of the information contained herein.</para>
   </legalnotice>
-<isbn>9781449366452</isbn><edition>1</edition><author><firstname>J. David</firstname><surname>Eisenberg</surname><authorblurb><para></para></authorblurb></author><editor><firstname>Simon</firstname><surname>St. Laurent</surname></editor><copyright><year>2010</year><holder>O&#x2019;Reilly Media    </holder></copyright><editor role='production'><firstname/><surname/></editor><editor role='copy'><firstname/><surname/></editor><othercredit role='indexer'><firstname/><surname/></othercredit><printhistory><formalpara><title>First Edition</title><para>March, 2013</para></formalpara></printhistory><revhistory><revision><date>2013-03-20</date><revremark>First release</revremark></revision></revhistory>
+<isbn>9781449366452</isbn><edition>1</edition><author><firstname>J. David</firstname><surname>Eisenberg</surname><authorblurb><para></para></authorblurb></author><editor><firstname>Simon</firstname><surname>St. Laurent</surname></editor><copyright><year>2010</year><holder>O&#x2019;Reilly Media    </holder></copyright>
+
+<!--<editor role='production'><firstname/><surname/></editor>
+<editor role='copy'><firstname/><surname/></editor>
+<othercredit role='indexer'><firstname/><surname/></othercredit>-->
+
+<printhistory><formalpara><title>First Edition</title><para>March, 2013</para></formalpara></printhistory><revhistory><revision><date>2013-03-20</date><revremark>First release</revremark></revision></revhistory>
 
    <mediaobject role="cover"> <!-- source in the cover -->
      <imageobject role="front-large" remap="lrg">
