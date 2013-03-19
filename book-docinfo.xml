@@ -30,7 +30,7 @@
 
   <legalnotice role='trademarks'>
     <para>Nutshell Handbook, the Nutshell Handbook logo, and the O&#x2019;Reilly logo
-          are registered trademarks of O&#x2019;Reilly Media, Inc. !!FILL THIS IN!!
+          are registered trademarks of O&#x2019;Reilly Media, Inc. <emphasis>Etudes for Erlang</emphasis>
           and related trade dress are trademarks of O&#x2019;Reilly Media, Inc.    </para>
     <para>Many of the designations used by manufacturers and sellers to distinguish
           their products are claimed as trademarks. Where those designations appear
