@@ -1,20 +1,8 @@
 <!DOCTYPE bookinfo PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN' 'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'><bookinfo>
 
-  <othercredit role='proofreader'>
-    <firstname>FIX</firstname>
-    <surname>ME!</surname>
-  </othercredit>
   <othercredit role='interiordesigner'>
     <firstname>David</firstname>
     <surname>Futato</surname>
-  </othercredit>
-  <othercredit role='illustrator'>
-    <firstname>Robert</firstname>
-    <surname>Romano</surname>
-  </othercredit>
-  <othercredit role='coverdesigner'>
-    <firstname>Karen</firstname>
-    <surname>Montgomery</surname>
   </othercredit>
 
   <!-- All rights reserved. -->
