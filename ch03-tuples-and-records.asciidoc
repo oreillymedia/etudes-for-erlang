@@ -50,8 +50,8 @@ Here is some sample output.
 18.84955592153876
 4> geom:area(triangle, 4, 5).
 10.0
-5> geom:area(square, -1, 3).
-** exception error: no function clause matching geom:area(square,-1,3) (geom.erl, line 18)
+5> geom:area(rectangle, -1, 3).
+** exception error: no function clause matching geom:area(rectangle,-1,3) (geom.erl, line 18)
 ----
 
 <<SOLUTION03-ET02,See a suggested solution in Appendix A.>>
