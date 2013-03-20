@@ -72,7 +72,7 @@ Here's the information you need to know to write the function:
   recursion.
 * When +N+ is positive, +X^N^+ is equal to +X+ times +X^(N - 1)^+ -- 
   there's your recursion.
-* When +N+ is negative, +X^N^+ is equal to +1.0 / X^N^+
+* When +N+ is negative, +X^N^+ is equal to +1.0 / X^-N^+
 
 Note that this function is _not_ tail recursive.  Here is some sample output.
 
