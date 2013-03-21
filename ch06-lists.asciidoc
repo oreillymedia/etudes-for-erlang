@@ -43,10 +43,8 @@ list can't really be said to have a minimum value.
 3> stats:minimum(N).
 -17
 4> stats:minimum([]).
-** exception error: bad argument
-     in function  hd/1
-        called as hd([])
-     in call from stats:minimum/1 (stats.erl, line 15)
+** exception error: no match of right hand side value []
+     in function  stats:minimum/1 (stats.erl, line 15)
 5> stats:minimum([52.46]).
 52.46
 -----
