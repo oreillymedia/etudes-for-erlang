@@ -30,7 +30,7 @@ minimum([Head|Tail], Result) ->
 
 maximum(NumberList) ->
   [Result | Rest] = NumberList,
-  minimum(Rest, Result).
+  maximum(Rest, Result).
 
 maximum([], Result) -> Result;
 
