@@ -12,12 +12,18 @@ a list of numbers as its argument and returns the smallest value. This
 function already exists in the +lists+ module (+lists:min/1+), but it's
 a good exercise in learning about recursion.
 
-Here's the pseudocode.
+Here's the pseudocode for +minimum/1+.
 
-* Call function +minimum/2+, which takes the list as its first argument and
+* Split the list into the first number and the remainder of the list using
+the cons operator `|`.
+* Call function +minimum/2+, which takes a list as its first argument and
 the "smallest number so far" (the _current candidate_) as its second argument.
-The starting value will be the head of the original number list passed to
-+minimum/1+.
+Use the remainder of the list (which you extracted in the previous step) as
+the first argument to +minimum/2+, and the first item in the list as the second
+argument.
+
+Here's the pseudocode for +minimum/2+.
+
 * When the list passed to +minimum/2+ is empty, the final result is the current
 candidate. This stops the recursion.
 * If the list passed to +minimum/2+ is not empty, then see if the head of
