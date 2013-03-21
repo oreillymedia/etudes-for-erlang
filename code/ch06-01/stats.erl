@@ -12,7 +12,7 @@
 -spec(minimum(list(number())) -> number()).
 
 minimum(NumberList) ->
-  [Result | Rest] = Numbers,
+  [Result | Rest] = NumberList,
   minimum(Rest, Result).
 
 minimum([], Result) -> Result;
