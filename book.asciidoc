@@ -2,6 +2,8 @@
 
 include::README.asciidoc[]
 
+include::contributors.asciidoc[]
+
 include::ch00-introduction.asciidoc[]
 
 include::ch01-getting-comfortable.asciidoc[]
