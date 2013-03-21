@@ -12,7 +12,8 @@
 -spec(minimum(list(number())) -> number()).
 
 minimum(NumberList) ->
-  minimum(NumberList, hd(NumberList)).
+  [Result | Rest] = Numbers,
+  minimum(Rest, Result).
 
 minimum([], Result) -> Result;
 
