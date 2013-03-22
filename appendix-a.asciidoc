@@ -210,7 +210,8 @@ include::code/ch06-02/stats.erl[]
 [[SOLUTION06-ET03]]
 === Solution 6-3
 Here is a suggested solution for
-<<CH06-ET03,Étude 6-3>>.
+<<CH06-ET03,Étude 6-3>> with leap years handled in the
++julian/5+ function.
 
 ==== +dates.erl+
 [source, erlang]
@@ -218,6 +219,15 @@ Here is a suggested solution for
 include::code/ch06-03/dates.erl[]
 ----
 
+Here is a suggested solution for
+<<CH06-ET03,Étude 6-3>> with leap years handled in the
++julian/1+ function.
+
+==== +dates.erl+
+[source, erlang]
+----
+include::code/ch06-03b/dates.erl[]
+----
 ////
 [[SOLUTION06-ETinterlude]]
 === Solution 6-interlude

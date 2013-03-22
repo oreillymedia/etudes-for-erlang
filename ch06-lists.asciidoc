@@ -116,7 +116,8 @@ Here is some sample output.
 The +julian/1+ function defines a 12-item list called +DaysPerMonth+ that
 contains the number of days in each month, splits the date into 
 the year, month, and day (using the +date_parts/1+ function you wrote in
-<<CH05-ET02,Étude 5-2>>, and then calls helper function +julian/5+ (yes, 5).
+<<CH05-ET02,Étude 5-2>>, and then calls helper function +julian/5+ (yes, 
+five arguments).
 
 The +julian/5+ function does all of the work. Its arguments are the year,
 month, day, the list of days per month, and an accumulated total, which
@@ -139,12 +140,20 @@ and yields 108 as its result.
 You know you are doing the last call when you have "used up"
 the first _month-1_ items in
 the list of days per month. That happens +when+ the month number is greater
-than +(13 - length(_days_per_month_list_))+.
+than +(13 - length(_days_per_month_list_))+. Hint: use a guard.
 
-Of course, there's still the problem of leap years. For non-leap years,
+Of course, there's still the problem of leap years. You can handle it in
+either +julian/5+ or +julian/1+. 
+
+If you want to do the work in +julian/5+, then for non-leap years,
 the last call to +julian/5+ adds the number of days in the target month.
 For leap years, the function must add the number of days in the
 target month plus one--but only if the month is after February.
+
+If you want to do the work in +julian/5+, use a +case+ to assign either
++28+ or +29+ to a variable named +DaysInFeb+ (depending on whether the
+year is a leap year), and then use that variable instead of 28 when you
+construct your original days per month list.
 
 I'll give you the code for the +is_leap_year/1+ function for free; it returns
 +true+ if the given year is a leap year, +false+ otherwise.
@@ -156,7 +165,7 @@ is_leap_year(Year) ->
   orelse (Year rem 400 == 0).
 ------
 
-<<SOLUTION06-ET03,See a suggested solution in Appendix A.>>
+<<SOLUTION06-ET03,See suggested solutions in Appendix A.>>
 
 [[CH06-INTERLUDE]]
 Interlude: "Mistakes were made."

@@ -24,8 +24,12 @@ date_parts(DateStr) ->
 -spec(julian(string()) -> pos_integer()).
 
 julian(IsoDate) ->
-  DaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
   [Y, M, D] = date_parts(IsoDate),
+  DaysInFeb = case is_leap_year(Y) of
+    true -> 29;
+    _else -> 28
+  end,
+  DaysPerMonth = [31, DaysInFeb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
   julian(Y, M, D, DaysPerMonth, 0).
 
 %% @doc Helper function that recursively accumulates the number of days
@@ -37,11 +41,8 @@ julian(Y, M, D, MonthList, Total) when M > 13 - length(MonthList) ->
   [ThisMonth|RemainingMonths] = MonthList,
   julian(Y, M, D, RemainingMonths, Total + ThisMonth);
 
-julian(Y, M, D, _MonthList, Total) ->
-  case M > 2 andalso is_leap_year(Y) of 
-    true -> Total + D + 1;
-    false -> Total + D
-  end.
+julian(_Y, _M, D, _MonthList, Total) ->
+  Total + D.
 
 %% @doc Given a year, return true or false depending on whether
 %% the year is a leap year.
