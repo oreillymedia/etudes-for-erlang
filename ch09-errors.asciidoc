@@ -25,7 +25,7 @@ Here is some sample output.
 {error,badarith}
 5> stats:stdv([]).
 {error,badarith}
---------
+-------
 
 <<SOLUTION09-ET01,See a suggested solution in Appendix A.>>
 
