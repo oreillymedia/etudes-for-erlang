@@ -379,7 +379,7 @@ for the same input. Since these functions aren't "pure," it's best to isolate
 them in a module of their own.
 
 In this étude, create a module named +non_fp+, and write a function 
-+generate_teeth/3+. This function has a string consisting of the characters
++generate_teeth/2+. This function has a string consisting of the characters
 +T+ and +F+ for its first argument.
 A +T+ in the string indicates that the tooth is present, and a
 +F+ indicates a missing tooth. In Erlang, a string is a list of characters,
