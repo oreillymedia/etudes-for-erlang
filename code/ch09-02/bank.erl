@@ -6,9 +6,10 @@
 -module(bank).
 -export([account/1]).
 
--spec(account(pid()) -> number()).
+-spec(account(number()) -> number()).
 
-%% @doc create a client and give it the process ID for an account
+%% @doc create a client and give it a starting balance
+
 account(Balance) ->
   Input = io:get_line("D)eposit, W)ithdraw, B)alance, Q)uit: "),
   Action = hd(Input),
