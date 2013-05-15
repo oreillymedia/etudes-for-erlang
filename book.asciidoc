@@ -26,4 +26,6 @@ include::ch10-storing-structured-data.asciidoc[]
 
 include::ch11-otp.asciidoc[]
 
+include::contributors.asciidoc[]
+
 include::appendix-a.asciidoc[]

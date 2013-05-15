@@ -44,7 +44,7 @@ more than $10,000, the deposit may be subject to hold.
 Provide output to the customer, and also use +error_logger+ to write to a
 log file (which, in this case, will go to your terminal).
 Choose any form of input prompts and feedback and logging messages that you
-deisre. Handle the following situtations:
+desire. Handle the following situtations:
 
 * Deposits and withdrawals cannot be negative numbers (error)
 * Deposits of $10,000 or more might be subject to hold (warning)

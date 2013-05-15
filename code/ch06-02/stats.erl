@@ -12,7 +12,8 @@
 -spec(minimum(list(number())) -> number()).
 
 minimum(NumberList) ->
-  minimum(NumberList, hd(NumberList)).
+  [Result | Rest] = NumberList,
+  minimum(Rest, Result).
 
 minimum([], Result) -> Result;
 
@@ -28,7 +29,8 @@ minimum([Head|Tail], Result) ->
 -spec(maximum(list(number())) -> number()).
 
 maximum(NumberList) ->
-  maximum(NumberList, hd(NumberList)).
+  [Result | Rest] = NumberList,
+  maximum(Rest, Result).
 
 maximum([], Result) -> Result;
 
@@ -43,5 +45,4 @@ maximum([Head|Tail], Result) ->
 -spec(range([number()]) -> [number()]).
 
 range(NumberList) -> [minimum(NumberList), maximum(NumberList)].
-
 

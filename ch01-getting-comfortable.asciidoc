@@ -9,7 +9,7 @@ NOTE: You can learn more about working with +erl+ in Chapter 2 of _Erlang Progra
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The first chapter of
 http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang]
-encourages you to play around with the interacative +erl+ system.
+encourages you to play around with the interactive +erl+ system.
 In this étude, keep using +erl+, but purposely make errors.
 
 Try leaving out parentheses in arithmetic expressions. Try putting
