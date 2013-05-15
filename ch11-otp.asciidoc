@@ -589,7 +589,7 @@ the chat node name.)
 +get_profile+::
 Returns the profile that's stored in the server's state (extra credit)
 
-+{profile, Key, Value}+::
++{set_profile, Key, Value}+::
 If the profile already contains the key, replace it with the given value.
 Otherwise, add the key and value to the profile. Hint: use 
 +lists:keymember/3+ and +lists:keyreplace/4+. (extra credit)
@@ -628,6 +628,17 @@ see the profile of the given person. (extra credit)
 +profile(Key, Value)+::
 A convenience method that calls the +person+ module with a
 +{profile, Key, Value}+ request. (extra credit)
+
+[NOTE]
+====
+The +login/2+, +logout/0+, and +say/2+ wrapper functions do _not_ call
+the chat server directly, because the +from+ pid would be the process
+calling those functions (usually the shell),
+not the person server. Instead, these functions will make a 
++gen_server:call+ to the +person+ server. Its +handle_call+
+function will forward the +gen_server:call+ to the +chatroom+. That way, the
+chat room server sees the request coming from the +person+ server.
+====
 
 Putting it All Together
 ^^^^^^^^^^^^^^^^^^^^^^^

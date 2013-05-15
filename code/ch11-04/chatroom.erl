@@ -39,7 +39,7 @@ handle_call({login, UserName, ServerRef}, From, State) ->
 %% Log out the person sending the message, but only
 %% if they're logged in already.
 
-handle_call({logout}, From, State) ->
+handle_call(logout, From, State) ->
   {FromPid, _FromTag} = From,
   case lists:keymember(FromPid, 2, State) of
     true ->
@@ -80,8 +80,16 @@ handle_call({say, Text}, From, State) ->
 
 %% Get the state of another person and return it to the asker
 
-handle_call({who, _Person, ServerRef}, _From, State) ->
-  Reply = gen_server:call({person, ServerRef}, get_profile),
+handle_call({who, Person, ServerRef}, _From, State) ->
+  % Find pid of the person at the serverref
+  Found = lists:keyfind({Person, ServerRef}, 1, State),
+  
+  case Found of
+    {{_FromUser, _FromServer}, Pid} ->
+      Reply = gen_server:call(Pid, get_profile);
+    _ ->
+      Reply = "Cannot find that user"
+  end,
   {reply, Reply, State};
 
 %% Return a list of all users currently in the chat room

@@ -11,7 +11,7 @@
 -record(state, {chat_node, profile}).
 
 % internal functions
--export([login/1, logout/0, say/1, users/0, who/2, profile/2]). 
+-export([login/1, logout/0, say/1, users/0, who/2, set_profile/2]). 
 
 -define(CLIENT, ?MODULE). % macro that defines this module as the client
 
@@ -27,6 +27,9 @@ init(ChatNode)->
 %% a) return the chat host name from the state,
 %% b) return the user profile
 %% c) update the user profile
+%% d) log a user in
+%% e) send a message to all people in chat room
+%% f) log a user out
 
 handle_call(get_chat_node, _From, State) ->
   {reply, State#state.chat_node, State};
@@ -34,7 +37,7 @@ handle_call(get_chat_node, _From, State) ->
 handle_call(get_profile, _From, State) ->
   {reply, State#state.profile, State};
   
-handle_call({profile, Key, Value}, _From, State) ->
+handle_call({set_profile, Key, Value}, _From, State) ->
   case lists:keymember(Key, 1, State#state.profile) of
     true -> NewProfile = lists:keyreplace(Key, 1, State#state.profile,
       {Key, Value});
@@ -42,6 +45,20 @@ handle_call({profile, Key, Value}, _From, State) ->
   end,
   {reply, NewProfile,
     #state{chat_node = State#state.chat_node, profile=NewProfile}};
+
+handle_call({login, UserName}, _From, State) ->
+  Reply = gen_server:call({chatroom, State#state.chat_node},
+    {login, UserName, node()}),
+  {reply, Reply, State};
+  
+handle_call({say, Text}, _From, State) ->
+  Reply = gen_server:call({chatroom, State#state.chat_node},
+    {say, Text}),
+  {reply, Reply, State};
+
+handle_call(logout, _From, State) ->
+  Reply = gen_server:call({chatroom, State#state.chat_node}, logout),
+  {reply, Reply, State};
 
 handle_call(_, _From, State) -> {ok, [], State}.
 
@@ -80,14 +97,13 @@ get_chat_node() ->
 -spec(login(string()) -> term()).
 
 login(UserName) ->
-  ChatNode = get_chat_node(),
   if
     is_atom(UserName) ->
-      gen_server:call({chatroom, ChatNode},
-        {login, atom_to_list(UserName), node()});
+      gen_server:call(?CLIENT,
+        {login, atom_to_list(UserName)});
     is_list(UserName) ->
-      gen_server:call({chatroom, ChatNode},
-        {login, UserName, node()});
+      gen_server:call(?CLIENT,
+        {login, UserName});
     true ->
       {error, "User name must be an atom or a list"}
   end.
@@ -99,8 +115,7 @@ login(UserName) ->
 -spec(logout() -> atom()).
 
 logout() ->
-  ChatNode = get_chat_node(),
-  gen_server:call({chatroom, ChatNode}, {logout}),
+  gen_server:call(?CLIENT, logout),
   ok.
 
 
@@ -109,8 +124,7 @@ logout() ->
 -spec(say(string()) -> atom()).
 
 say(Text) ->
-  ChatNode = get_chat_node(),
-  gen_server:call({chatroom, ChatNode}, {say, Text}),
+  gen_server:call(?CLIENT, {say, Text}),
   ok.
 
 %% @doc Ask chat room server for a list of users.
@@ -125,13 +139,14 @@ users() ->
 -spec(who(string(), atom()) -> [tuple()]).
 
 who(Person, ServerRef) ->
-  gen_server:call({chatroom, get_chat_node()}, {who, Person, ServerRef}).
+  gen_server:call({chatroom, get_chat_node()},
+    {who, Person, ServerRef}).
 
 %% @doc Update profile with a key/value pair.
 
--spec(profile(atom(), term()) -> term()).
+-spec(set_profile(atom(), term()) -> term()).
 
-profile(Key, Value) ->
+set_profile(Key, Value) ->
   % ask *this* server for the current state
-  NewProfile = gen_server:call(person, {profile, Key, Value}),
+  NewProfile = gen_server:call(?CLIENT, {set_profile, Key, Value}),
   {ok, NewProfile}.
