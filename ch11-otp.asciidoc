@@ -625,9 +625,9 @@ Calls the chat server with a +users+ request.
 Calls the chat server with a +{who, UserName, UserNode}+ request to
 see the profile of the given person. (extra credit)
 
-+profile(Key, Value)+::
++set_profile(Key, Value)+::
 A convenience method that calls the +person+ module with a
-+{profile, Key, Value}+ request. (extra credit)
++{set_profile, Key, Value}+ request. (extra credit)
 
 [NOTE]
 ====
