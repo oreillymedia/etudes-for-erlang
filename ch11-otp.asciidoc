@@ -672,7 +672,7 @@ Chat node is: lobby@localhost
 {ok,<0.39.0>}
 (sales@localhost)2> person:login("Steve").
 {ok,"Logged in."}
-(sales@localhost)3> person:profile(city, "Chicago").
+(sales@localhost)3> person:set_profile(city, "Chicago").
 {ok,[{city,"Chicago"}]}
 David (engineering@localhost) says: "Hi, everyone."
 (sales@localhost)4> person:say("How's things in Toronto, David?").
@@ -693,9 +693,9 @@ Chat node is: lobby@localhost
 {ok,<0.39.0>}
 (engineering@localhost)2> person:login("David").
 {ok,"Logged in."}
-(engineering@localhost)3> person:profile(city, "Toronto").
+(engineering@localhost)3> person:set_profile(city, "Toronto").
 {ok,[{city,"Toronto"}]}
-(engineering@localhost)4> person:profile(department, "New Products").
+(engineering@localhost)4> person:set_profile(department, "New Products").
 {ok,[{department,"New Products"},{city,"Toronto"}]}
 (engineering@localhost)5> person:say("Hi, everyone.").  
 ok
@@ -717,7 +717,7 @@ Chat node is: lobby@localhost
 {ok,<0.39.0>}
 (marketing@localhost)2> person:login("Michele").
 {ok,"Logged in."}
-(marketing@localhost)3> person:profile(city, "San Jose").
+(marketing@localhost)3> person:set_profile(city, "San Jose").
 {ok,[{city,"San Jose"}]}
 David (engineering@localhost) says: "Hi, everyone."
 Steve (sales@localhost) says: "How's things in Toronto, David?"
