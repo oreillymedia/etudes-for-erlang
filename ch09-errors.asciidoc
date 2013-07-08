@@ -101,5 +101,5 @@ D)eposit, W)ithdraw, B)alance, Q)uit: Q
 true
 -----------
 
-<<SOLUTION09-ET02s,See a suggested solution in Appendix A.>>
+<<SOLUTION09-ET02,See a suggested solution in Appendix A.>>
 
