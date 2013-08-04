@@ -116,44 +116,42 @@ Here is some sample output.
 The +julian/1+ function defines a 12-item list called +DaysPerMonth+ that
 contains the number of days in each month, splits the date into 
 the year, month, and day (using the +date_parts/1+ function you wrote in
-<<CH05-ET02,Étude 5-2>>, and then calls helper function +julian/5+ (yes, 
-five arguments).
+<<CH05-ET02,Étude 5-2>>, and then calls helper function +julian/4+ (yes,
+four arguments).
 
-The +julian/5+ function does all of the work. Its arguments are the year,
+The +julian/4+ function does most of the work. Its arguments are the
 month, day, the list of days per month, and an accumulated total, which
-starts at zero. +julian/5+ takes the head of the days per month list and
-adds it to the accumulator, and then calls +julian/5+ again with the
+starts at zero. +julian/4+ takes the head of the days per month list and
+adds it to the accumulator, and then calls +julian/4+ again with the
 tail of the days per month list and the accumulator value as its last two
 arguments.
 
+The first value, the month, counts down with each recursive call until
+it reaches 1.
+
 Let's take, as an example, the sequence of calls for April 18, 2013:
 
-   julian(2013, 4, 18, [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 0).
-   julian(2013, 4, 18, [28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 31).
-   julian(2013, 4, 18, [31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 59).
-   julian(2013, 4, 18, [30, 31, 30, 31, 31, 30, 31, 30, 31], 90).
+   julian(4, 18, [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 0).
+   julian(3, 18, [28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 31).
+   julian(2, 18, [31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 59).
+   julian(1, 18, [30, 31, 30, 31, 31, 30, 31, 30, 31], 90).
 
-At this point, the accumulator has all the days up through the beginning of
-April, so the last call to +julian/5+ just adds the 18 remaining days
-and yields 108 as its result.
+This last is the terminating call for the recursive function. The
+accumulator has a tally of the days through the beginning of April,
+and by adding the second argument, the days of the month (18) we
+find 108 as the result.
 
-You know you are doing the last call when you have "used up"
-the first _month-1_ items in
-the list of days per month. That happens +when+ the month number is greater
-than +(13 - length(_days_per_month_list_))+. Hint: use a guard.
+As a hint for building +julian/4+, here's a function header and clause
+which guards against a day of month value that is greater than the
+actual days for that month.
 
-Of course, there's still the problem of leap years. You can handle it in
-either +julian/5+ or +julian/1+. 
+[source, erlang]
+------
+julian(1, Day, [H|_T], _Tally) when H < Day ->
+  throw(illegal_day_in_month);
+------
 
-If you want to do the work in +julian/5+, then for non-leap years,
-the last call to +julian/5+ adds the number of days in the target month.
-For leap years, the function must add the number of days in the
-target month plus one--but only if the month is after February.
-
-If you want to do the work in +julian/5+, use a +case+ to assign either
-+28+ or +29+ to a variable named +DaysInFeb+ (depending on whether the
-year is a leap year), and then use that variable instead of 28 when you
-construct your original days per month list.
+Of course, there's still the problem of leap years.
 
 I'll give you the code for the +is_leap_year/1+ function for free; it returns
 +true+ if the given year is a leap year, +false+ otherwise.
@@ -164,6 +162,11 @@ is_leap_year(Year) ->
   (Year rem 4 == 0 andalso Year rem 100 /= 0)
   orelse (Year rem 400 == 0).
 ------
+
+By building the +DaysPerMonth+ list outside +julian/1+ in a function
++days_per_month/1+ with two distinct function heads and clauses,
++is_leap_year/1+ can be used to determine which list to be retrieved:
+with 28 or 29 days for the month of February.
 
 <<SOLUTION06-ET03,See suggested solutions in Appendix A.>>
 
