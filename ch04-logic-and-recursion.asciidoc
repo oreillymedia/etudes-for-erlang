@@ -30,7 +30,7 @@ To find the GCD of integers M and N:
 * Otherwise M must be less than N, and the result is the GCD of M and N - M.
 
 Write a function +gcd/2+ in a module named +dijkstra+ that implements
-the algorithm. This program is an ideal place to practice Erlang's +if+ construct. 
+the algorithm. This program is a good place to practice Elixir's +cond+ construct. 
 Here is some sample output.
 
 [source,erl]
@@ -49,7 +49,7 @@ Here is some sample output.
 
 <<SOLUTION04-ET02,See a suggested solution in Appendix A.>>
 
-You can also use guards with multiple clauses to solve this étude; <<SOLUTION04-ET02B,the solution for that approach is in Appendix A.>> In general, use of guards is considered more in the spirit of Erlang.
+You can also use guards with multiple clauses to solve this étude; <<SOLUTION04-ET02B,the solution for that approach is in Appendix A.>> In general, use of multiple clauses with guards is considered more in the spirit of Erlang.
 
 The next two exercises involve writing code to raise a number to an integer
 power (like 2.5^3^ or 4^-2^) and finding the __n__th root of a number, such
