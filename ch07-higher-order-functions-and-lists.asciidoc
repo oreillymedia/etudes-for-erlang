@@ -11,7 +11,7 @@ In calculus, the derivative of a function is "a measure of how a function
 changes as its input changes"
 (http://en.wikipedia.org/wiki/Derivative[Wikipedia]). For example,
 if an object is traveling at a constant velocity, that velocity is the same
-from moment to moment, so the derviative is zero. If an object is falling, its
+from moment to moment, so the derivative is zero. If an object is falling, its
 velocity changes a little bit as the object starts falling, and then falls
 faster and faster as time goes by.
 
