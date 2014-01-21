@@ -1,3 +1,5 @@
+:bookseries: maker4c
+
 = Études for Erlang
 
 include::README.asciidoc[]
