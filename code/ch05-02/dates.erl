@@ -10,7 +10,7 @@
 %% @doc Takes a string in ISO date format (yyyy-mm-dd) and
 %% returns a list of integers in form [year, month, day].
 
--spec(date_parts(list()) -> list()).
+-spec(date_parts(string()) -> list()).
 
 date_parts(DateStr) ->
   [YStr, MStr, DStr] = re:split(DateStr, "-", [{return, list}]),
