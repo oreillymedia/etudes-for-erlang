@@ -8,7 +8,7 @@
 
 %% @doc Create a list of tooth numbers that require attention.
 
--spec(alert[integer()]) -> [integer()]).
+-spec(alert([integer()]) -> [integer()]).
 
 alert(ToothList) -> alert(ToothList, 1, []).
 
