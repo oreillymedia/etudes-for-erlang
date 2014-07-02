@@ -39,9 +39,9 @@ generate_teeth([$T | Tail], ProbGood, Result) ->
 
 generate_tooth(ProbGood) ->
   Good = random:uniform() < ProbGood,
-  case Good of
-    true -> BaseDepth = 2;
-    false -> BaseDepth = 3
+  BaseDepth = case Good of
+    true -> 2;
+    false -> 3
   end,
   generate_tooth(BaseDepth, 6).
 
