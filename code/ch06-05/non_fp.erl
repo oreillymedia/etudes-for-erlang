@@ -43,15 +43,15 @@ generate_tooth(ProbGood) ->
     true -> BaseDepth = 2;
     false -> BaseDepth = 3
   end,
-  generate_tooth(BaseDepth, 6, []).
+  generate_tooth(BaseDepth, 6).
 
 %% @doc Take the base depth, add a number in range -1..1 to it,
 %% and add it to the list.
 
-generate_tooth(_Base, 0, Result) -> Result;
+generate_tooth(_Base, 0) -> [];
 
-generate_tooth(Base, N, Result) ->
-  [Base + random:uniform(3) - 2 | generate_tooth(Base, N - 1, Result)].
+generate_tooth(Base, N) ->
+  [Base + random:uniform(3) - 2 | generate_tooth(Base, N - 1)].
   
 test_teeth() ->
   TList = "FTTTTTTTTTTTTTTFTTTTTTTTTTTTTTTT",
