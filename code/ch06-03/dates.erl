@@ -24,24 +24,21 @@ date_parts(DateStr) ->
 -spec(julian(string()) -> pos_integer()).
 
 julian(IsoDate) ->
-  DaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
   [Y, M, D] = date_parts(IsoDate),
-  julian(Y, M, D, DaysPerMonth, 0).
+  DaysPerMonth = days_per_month(is_leap_year(Y)),
+  julian(M, D, DaysPerMonth, 0).
 
 %% @doc Helper function that recursively accumulates the number of days
 %% up to the specified date.
 
--spec(julian(integer(), integer(), integer(), [integer()], integer) -> integer()).
+-spec(julian(integer(), integer(), [integer()], integer()) -> integer()).
 
-julian(Y, M, D, MonthList, Total) when M > 13 - length(MonthList) ->
-  [ThisMonth|RemainingMonths] = MonthList,
-  julian(Y, M, D, RemainingMonths, Total + ThisMonth);
-
-julian(Y, M, D, _MonthList, Total) ->
-  case M > 2 andalso is_leap_year(Y) of 
-    true -> Total + D + 1;
-    false -> Total + D
-  end.
+julian(1, Day, [H|_T], _Tally) when H < Day ->
+  throw(illegal_day_in_month);
+julian(1, Day, _MonthsList, Tally) ->
+  Tally + Day;
+julian(Month, Day, [H|T], Tally) ->
+  julian(Month - 1, Day, T, Tally + H).
 
 %% @doc Given a year, return true or false depending on whether
 %% the year is a leap year.
@@ -52,3 +49,12 @@ is_leap_year(Year) ->
   (Year rem 4 == 0 andalso Year rem 100 /= 0)
     orelse (Year rem 400 == 0).
 
+%% @doc Given a boolean value indicating leap year, return a list of
+%% day counts for each month in the year.
+
+-spec(days_per_month(boolean()) -> list(integer())).
+
+days_per_month(false) ->
+  [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+days_per_month(true) ->
+  [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31].
