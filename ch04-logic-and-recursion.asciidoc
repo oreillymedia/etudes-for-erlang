@@ -30,7 +30,7 @@ To find the GCD of integers M and N:
 * Otherwise M must be less than N, and the result is the GCD of M and N - M.
 
 Write a function +gcd/2+ in a module named +dijkstra+ that implements
-the algorithm. This program is a good place to practice Elixir's +cond+ construct. 
+the algorithm. This program is a good place to practice Erlang's +if+ construct.
 Here is some sample output.
 
 [source,erl]
