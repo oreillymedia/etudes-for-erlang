@@ -151,7 +151,7 @@ ok
 Étude 10-2: Using Mnesia
 ~~~~~~~~~~~~~~~~~~~~~~~~
 I have good news and bad news. First, the bad news. Mnesia is _not_
-a relational detabase management system. If you try to use a query
+a relational database management system. If you try to use a query
 list comprehension to join three tables, Erlang will complain that joins
 with more than two tables are not efficient.
 
