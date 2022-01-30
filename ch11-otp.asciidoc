@@ -364,7 +364,7 @@ connect to your node.
 
 To connect to a node, use the +net_adm:ping/1+ function, and give it
 the name of the server you want to connect to as its argument. If you
-connect succesfully, the function will return the atom +pong+; otherwise,
+connect successfully, the function will return the atom +pong+; otherwise,
 it will return +pang+.
 
 Here is an example. First, start a shell with a (very bad) secret
