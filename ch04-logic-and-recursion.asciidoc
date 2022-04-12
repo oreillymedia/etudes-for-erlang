@@ -79,7 +79,7 @@ Here's the information you need to know to write the function:
 Note that this function is _not_ tail recursive.  Here is some sample output.
 
 [source, erl]
--------
+----
 1> c(powers).
 {ok,powers}
 2> powers:raise(5, 1).
@@ -92,7 +92,7 @@ Note that this function is _not_ tail recursive.  Here is some sample output.
 1
 6> powers:raise(2, -3).
 0.125
-------
+----
 
 <<SOLUTION04-ET03,See a suggested solution in Appendix A.>>
 
