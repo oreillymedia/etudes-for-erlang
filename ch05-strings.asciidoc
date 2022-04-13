@@ -27,7 +27,7 @@ letters, non-numeric input, and negative numbers as input.
 Here is some sample output.
 
 [source, erl]
--------
+----
 1> c(ask_area).
 {ok,ask_area}
 2> c(geom).
